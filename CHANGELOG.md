@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.112.1-alpha.8f660ddadc3dfc8e6eb8ef9fbbbc2bf11e0a9b59](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.112.0...v1.112.1-alpha.8f660ddadc3dfc8e6eb8ef9fbbbc2bf11e0a9b59) (2020-11-11)
+
+
+### Features
+
+* **payments:** PAYPAL-805 removed 3DS validation ([8f660dd](https://github.com/bigcommerce/checkout-sdk-js/commit/8f660ddadc3dfc8e6eb8ef9fbbbc2bf11e0a9b59))
+
 ## [1.112.0](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.111.0...v1.112.0) (2020-11-09)
 
 
