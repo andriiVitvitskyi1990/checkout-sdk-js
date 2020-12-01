@@ -19,7 +19,8 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         private _paymentActionCreator: PaymentActionCreator,
         private _paypalCommercePaymentProcessor: PaypalCommercePaymentProcessor,
         private _paypalCommerceFundingKeyResolver: PaypalCommerceFundingKeyResolver
-    ) {}
+    ) {
+    }
 
     async initialize({ gatewayId, methodId, paypalcommerce }: PaymentInitializeOptions): Promise<InternalCheckoutSelectors> {
         const { paymentMethods: { getPaymentMethodOrThrow }, cart: { getCartOrThrow } } = this._store.getState();
@@ -55,7 +56,7 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         this._paypalCommercePaymentProcessor.renderButtons(cartId, container, buttonParams, {
             onRenderButton,
             fundingKey: this._paypalCommerceFundingKeyResolver.resolve(methodId, gatewayId),
-            paramsForProvider: {isCheckout: true},
+            paramsForProvider: { isCheckout: true },
         });
 
         return this._store.getState();
@@ -65,14 +66,14 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         const { payment, ...order } = payload;
 
         if (!payment) {
-            throw new PaymentArgumentInvalidError(['payment']);
+            throw new PaymentArgumentInvalidError([ 'payment' ]);
         }
 
         if (!this._orderId) {
             throw new PaymentMethodInvalidError();
         }
 
-        const paymentData =  {
+        const paymentData = {
             formattedPayload: {
                 vault_payment_instrument: null,
                 set_as_default_stored_instrument: null,
@@ -109,14 +110,15 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     }
 
     private _getOptionsScript(initializationData: PaypalCommerceInitializationData, currencyCode: Cart['currency']['code']): PaypalCommerceScriptParams {
-        const { clientId, intent, merchantId } = initializationData;
-
-        return {
+        const { clientId, intent, merchantId, buyerCountry, isDeveloperModeApplicable } = initializationData;
+        const returnObject = {
             'client-id': clientId,
             'merchant-id': merchantId,
             commit: true,
             currency: currencyCode,
             intent,
         };
+
+        return isDeveloperModeApplicable ? { ...returnObject, 'buyer-country': buyerCountry } : returnObject;
     }
 }
