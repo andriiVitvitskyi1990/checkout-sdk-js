@@ -97,7 +97,8 @@ describe('PaypalCommercePaymentStrategy', () => {
             orderActionCreator,
             paymentActionCreator,
             paypalCommercePaymentProcessor,
-            paypalCommerceFundingKeyResolver
+            paypalCommerceFundingKeyResolver,
+            new PaypalCommerceRequestSender(requestSender)
         );
     });
 
@@ -141,6 +142,7 @@ describe('PaypalCommercePaymentStrategy', () => {
             const buttonOption = {
                 onApprove: expect.any(Function),
                 onClick: expect.any(Function),
+                onCancel: expect.any(Function),
             };
 
             const optionalParams = { fundingKey: 'PAYPAL', paramsForProvider: { isCheckout: true }, onRenderButton: expect.any(Function) };
@@ -164,6 +166,7 @@ describe('PaypalCommercePaymentStrategy', () => {
             const buttonOption = {
                 onApprove: expect.any(Function),
                 onClick: expect.any(Function),
+                onCancel: expect.any(Function),
             };
 
             const optionalParams = { fundingKey: 'PAYLATER', paramsForProvider: { isCheckout: true }, onRenderButton: expect.any(Function) };
@@ -186,6 +189,7 @@ describe('PaypalCommercePaymentStrategy', () => {
                 .toHaveBeenCalledWith(cart.id, `${paypalcommerceOptions.container}`,
                     {   onApprove: expect.any(Function),
                         onClick: expect.any(Function),
+                        onCancel: expect.any(Function),
                         style: paymentMethod.initializationData.buttonStyle },
                     {   paramsForProvider: { isCheckout: true },
                         onRenderButton: expect.any(Function),

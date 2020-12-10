@@ -1,6 +1,6 @@
 
 export interface ApproveDataOptions {
-    orderID: string;
+    orderID: string | undefined;
 }
 
 export interface ClickDataOptions {
@@ -15,6 +15,11 @@ export interface ClickActions {
 export interface OrderData {
     orderId: string;
     approveUrl: string;
+    initializationId: number;
+}
+
+export interface OrderStatus {
+    status: string;
 }
 
 export enum StyleButtonLabel {
@@ -58,6 +63,7 @@ export interface ButtonsOptions {
     createOrder?(): Promise<string>;
     onApprove?(data: ApproveDataOptions): void;
     onClick?(data: ClickDataOptions, actions: ClickActions): void;
+    onCancel?(): void;
 }
 
 export interface MessagesOptions {
@@ -180,6 +186,8 @@ export interface PaypalCommerceInitializationData {
     clientId: string;
     merchantId?: string;
     intent?: 'capture' | 'authorize';
+    isDeveloperModeApplicable?: boolean;
+    buyerCountry?: string;
     isPayPalCreditAvailable?: boolean;
     isProgressiveOnboardingAvailable?: boolean;
     clientToken?: string;
@@ -192,6 +200,7 @@ export type ComponentsScriptType = Array<'buttons' | 'messages' | 'hosted-fields
 export interface PaypalCommerceScriptParams  {
     'client-id': string;
     'merchant-id'?: string;
+    'buyer-country'?: string;
     'disable-funding'?: DisableFundingType;
     'data-client-token'?: string;
     'partner-attribution-id'?: string;

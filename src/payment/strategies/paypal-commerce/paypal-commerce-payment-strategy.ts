@@ -8,7 +8,15 @@ import PaymentActionCreator from '../../payment-action-creator';
 import { PaymentInitializeOptions, PaymentRequestOptions } from '../../payment-request-options';
 import PaymentStrategy from '../payment-strategy';
 
-import { ApproveDataOptions, ButtonsOptions, PaypalCommerceCreditCardPaymentInitializeOptions, PaypalCommerceFundingKeyResolver, PaypalCommerceInitializationData, PaypalCommercePaymentInitializeOptions, PaypalCommercePaymentProcessor, PaypalCommerceScriptParams } from './index';
+import { ApproveDataOptions,
+    ButtonsOptions,
+    PaypalCommerceCreditCardPaymentInitializeOptions,
+    PaypalCommerceFundingKeyResolver,
+    PaypalCommerceInitializationData,
+    PaypalCommercePaymentInitializeOptions,
+    PaypalCommercePaymentProcessor,
+    PaypalCommerceRequestSender,
+    PaypalCommerceScriptParams } from './index';
 
 export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     private _orderId?: string;
@@ -18,7 +26,9 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         private _orderActionCreator: OrderActionCreator,
         private _paymentActionCreator: PaymentActionCreator,
         private _paypalCommercePaymentProcessor: PaypalCommercePaymentProcessor,
-        private _paypalCommerceFundingKeyResolver: PaypalCommerceFundingKeyResolver
+        private _paypalCommerceFundingKeyResolver: PaypalCommerceFundingKeyResolver,
+        private _paypalCommerceRequestSender: PaypalCommerceRequestSender,
+        private _pollingInterval?: any
     ) {}
 
     async initialize({ gatewayId, methodId, paypalcommerce }: PaymentInitializeOptions): Promise<InternalCheckoutSelectors> {
@@ -42,12 +52,17 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
 
         const { container, onRenderButton, submitForm, onValidate } = paypalcommerce;
         const { id: cartId, currency: { code: currencyCode } } = getCartOrThrow();
-
         const paramsScript = this._getOptionsScript(initializationData, currencyCode);
+
         const buttonParams: ButtonsOptions = {
             style: buttonStyle,
             onApprove: data => this._tokenizePayment(data, submitForm),
-            onClick: async (_, actions) => onValidate(actions.resolve, actions.reject),
+            onClick: async (_, actions) => {
+                this.setPollingMechanism(gatewayId, submitForm);
+
+                return  onValidate(actions.resolve, actions.reject);
+            },
+            onCancel: () => clearInterval(this._pollingInterval),
         };
 
         await this._paypalCommercePaymentProcessor.initialize(paramsScript);
@@ -89,14 +104,32 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     }
 
     finalize(): Promise<InternalCheckoutSelectors> {
+
         return Promise.reject(new OrderFinalizationNotRequiredError());
     }
 
     async deinitialize(): Promise<InternalCheckoutSelectors> {
+        clearInterval(this._pollingInterval);
         this._orderId = undefined;
         this._paypalCommercePaymentProcessor.deinitialize();
 
         return Promise.resolve(this._store.getState());
+    }
+
+    private setPollingMechanism(gatewayId: string | undefined, submitForm: any) {
+        this._pollingInterval = setInterval(async () =>  {
+            try {
+                if (this._paypalCommercePaymentProcessor.getInitializationId() && gatewayId === 'paypalcommercealternativemethods') {
+                    const res = await this._paypalCommerceRequestSender.askForOrderStatus(this._paypalCommercePaymentProcessor.getInitializationId());
+                    if (res.status.toLowerCase() === 'approved') {
+                        clearInterval(this._pollingInterval);
+                        this._tokenizePayment({orderID: this._paypalCommercePaymentProcessor.getOrderId()}, submitForm);
+                    }
+                }
+            } catch (e) {
+                clearInterval(this._pollingInterval);
+            }
+        }, 3000);
     }
 
     private _isPaypalCommerceOptionsPayments(options: PaypalCommercePaymentInitializeOptions | PaypalCommerceCreditCardPaymentInitializeOptions): options is PaypalCommercePaymentInitializeOptions {
@@ -109,14 +142,15 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     }
 
     private _getOptionsScript(initializationData: PaypalCommerceInitializationData, currencyCode: Cart['currency']['code']): PaypalCommerceScriptParams {
-        const { clientId, intent, merchantId } = initializationData;
-
-        return {
+        const { clientId, intent, merchantId, buyerCountry, isDeveloperModeApplicable } = initializationData;
+        const returnObject = {
             'client-id': clientId,
             'merchant-id': merchantId,
             commit: true,
             currency: currencyCode,
             intent,
         };
+
+        return isDeveloperModeApplicable ? { ...returnObject, 'buyer-country': buyerCountry } : returnObject;
     }
 }

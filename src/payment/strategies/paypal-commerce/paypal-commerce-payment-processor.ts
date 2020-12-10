@@ -33,7 +33,9 @@ export default class PaypalCommercePaymentProcessor {
 
     constructor(
         private _paypalScriptLoader: PaypalCommerceScriptLoader,
-        private _paypalCommerceRequestSender: PaypalCommerceRequestSender
+        private _paypalCommerceRequestSender: PaypalCommerceRequestSender,
+        private _initializationId?: number,
+        private _orderId?: string
     ) {}
 
     async initialize(paramsScript: PaypalCommerceScriptParams, isProgressiveOnboardingAvailable?: boolean): Promise<PaypalCommerceSDK> {
@@ -79,6 +81,14 @@ export default class PaypalCommercePaymentProcessor {
         this._paypalButtons.render(container);
 
         return this._paypalButtons;
+    }
+
+    getInitializationId() {
+        return this._initializationId;
+    }
+
+    getOrderId() {
+        return this._orderId;
     }
 
     renderMessages(cartTotal: number, container: string): PaypalCommerceMessages {
@@ -145,7 +155,6 @@ export default class PaypalCommercePaymentProcessor {
 
     deinitialize() {
         this._paypalButtons?.close?.();
-
         this._paypal = undefined;
         this._paypalButtons = undefined;
         this._fundingSource = undefined;
@@ -154,7 +163,9 @@ export default class PaypalCommercePaymentProcessor {
 
     private async _setupPayment(cartId: string, params: ParamsForProvider = {}): Promise<string> {
         const paramsForProvider = { ...params, isCredit: this._fundingSource === 'credit' || this._fundingSource === 'paylater' };
-        const { orderId } = await this._paypalCommerceRequestSender.setupPayment(cartId, paramsForProvider);
+        const { orderId, initializationId } = await this._paypalCommerceRequestSender.setupPayment(cartId, paramsForProvider);
+        this._initializationId = initializationId;
+        this._orderId = orderId;
 
         return orderId;
     }
