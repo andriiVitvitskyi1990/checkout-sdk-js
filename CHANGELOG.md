@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.116.1-alpha.d4b216d42ed63851191818f2123a25ea1d5ffbaf](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.112.0...v1.116.1-alpha.d4b216d42ed63851191818f2123a25ea1d5ffbaf) (2020-12-14)
+
+
+### Features
+
+* **payment:** INT-3237 Allows reinitialize the cardinal script ([38a2d23](https://github.com/bigcommerce/checkout-sdk-js/commit/38a2d2372aca4ff1cf3071a309af74c597390f55))
+* **payment:** INT-3438 Integrate Barclays strategy ([c53119d](https://github.com/bigcommerce/checkout-sdk-js/commit/c53119d6dc7501f25f601b0ab3ad8f1dcc9439a2))
+* **payment:** PAYAPAL-876 implemented polling mechanism ([358b1ff](https://github.com/bigcommerce/checkout-sdk-js/commit/358b1ff7c57834f3cb34fe15ff32b0b4f028a399))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([a4003ae](https://github.com/bigcommerce/checkout-sdk-js/commit/a4003aee8b35723040562c31c3afd52989848937))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([7b931d8](https://github.com/bigcommerce/checkout-sdk-js/commit/7b931d8d7621a749c722075541a275080279115b))
+* **payment:** PAYPAL-837 Submit cardholder name to PayPal ([b0d0a61](https://github.com/bigcommerce/checkout-sdk-js/commit/b0d0a6133e1986fdcfca4d9cc5b77f3412d8360e))
+* **payment:** PAYPAL-839 Move method_id in execute ([9f8a35a](https://github.com/bigcommerce/checkout-sdk-js/commit/9f8a35a3d959bb4df2c4d12480b67edd035b79b3))
+* **payment:** PAYPAL-868 fixed ([0110b94](https://github.com/bigcommerce/checkout-sdk-js/commit/0110b94c95d792403d4c2423298b4e20ecf8083b))
+* **payment:** PAYPAL-868 fixed ([28a8b53](https://github.com/bigcommerce/checkout-sdk-js/commit/28a8b53e1b9ae44b0983e098babdcc2b185e5ac6))
+* **payment:** PAYPAL-868 fixed ([ccabf10](https://github.com/bigcommerce/checkout-sdk-js/commit/ccabf10d0a91da58699977bce509a9c28b5e7a13))
+* **payment:** PAYPAL-868 fixed ([862cfc9](https://github.com/bigcommerce/checkout-sdk-js/commit/862cfc958dd8f59d48636a19d6932f70e5ed64c7))
+* **payment:** PAYPAL-868 fixed ([0533c8c](https://github.com/bigcommerce/checkout-sdk-js/commit/0533c8ce8d651b6fbadf0cdb37fe10c0e4615c76))
+* **payment:** PAYPAL-868 fixed ([d83e9ff](https://github.com/bigcommerce/checkout-sdk-js/commit/d83e9ff891707ff340be9aa295f88577542bba0b))
+* **payment:** PAYPAL-876 added polling mechanism ([d4b216d](https://github.com/bigcommerce/checkout-sdk-js/commit/d4b216d42ed63851191818f2123a25ea1d5ffbaf))
+
+
+### Bug Fixes
+
+* **common:** CHECKOUT-4571 Remove alpha tags from stable functionality ([b8c1667](https://github.com/bigcommerce/checkout-sdk-js/commit/b8c16672075596af00519ca3901482a922cedbc3))
+
 ## [1.116.0](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.115.0...v1.116.0) (2020-12-01)
 
 

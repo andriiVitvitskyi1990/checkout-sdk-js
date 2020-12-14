@@ -623,11 +623,6 @@ currencyService.toStoreCurrency(checkout.grandTotal);
 currencyService.toCustomerCurrency(checkout.grandTotal);
 ```
 
-**`alpha`** 
-Please note that `CurrencyService` is currently in an early stage
-of development. Therefore the API is unstable and not ready for public
-consumption.
-
 **Parameters:**
 
 Name | Type | Description |
@@ -717,11 +712,6 @@ const stepTracker = createStepTracker(checkoutService);
 
 stepTracker.trackCheckoutStarted();
 ```
-
-**`alpha`** 
-Please note that `StepTracker` is currently in an early stage
-of development. Therefore the API is unstable and not ready for public
-consumption.
 
 **Parameters:**
 
