@@ -119,8 +119,8 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     private setPollingMechanism(gatewayId: string | undefined, submitForm: any) {
         this._pollingInterval = setInterval(async () =>  {
             try {
-                if (this._paypalCommercePaymentProcessor.getInitializationId() && gatewayId === 'paypalcommercealternativemethods') {
-                    const res = await this._paypalCommerceRequestSender.askForOrderStatus(this._paypalCommercePaymentProcessor.getInitializationId());
+                if (gatewayId === 'paypalcommercealternativemethods') {
+                    const res = await this._paypalCommerceRequestSender.askForOrderStatus();
                     if (res.status.toLowerCase() === 'approved') {
                         clearInterval(this._pollingInterval);
                         this._tokenizePayment({orderID: this._paypalCommercePaymentProcessor.getOrderId()}, submitForm);

@@ -39,8 +39,8 @@ export default class PaypalCommerceRequestSender {
         return res.body as OrderData;
     }
 
-    async askForOrderStatus(initializationId: number | undefined): Promise<OrderStatus> {
-        const url = `/api/storefront/initialization/${initializationId}`;
+    async askForOrderStatus(): Promise<OrderStatus> {
+        const url = `/api/storefront/initialization/paypalcommerce`;
         const headers = {
             'X-API-INTERNAL': INTERNAL_USE_ONLY,
             'Content-Type': ContentType.Json,

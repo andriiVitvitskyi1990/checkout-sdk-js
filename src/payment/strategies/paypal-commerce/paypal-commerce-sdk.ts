@@ -15,7 +15,6 @@ export interface ClickActions {
 export interface OrderData {
     orderId: string;
     approveUrl: string;
-    initializationId: number;
 }
 
 export interface OrderStatus {
