@@ -159,6 +159,7 @@ export interface PaypalCommerceSDKFunding {
     BLIK: string;
     TRUSTLY: string;
     VERKKOPANKKI: string;
+    PRZLEWY24: string;
 }
 
 export interface PaypalCommerceSDK {
@@ -198,5 +199,15 @@ export interface PaypalCommerceScriptParams  {
     currency?: string;
     commit?: boolean;
     intent?: 'capture' | 'authorize';
+    components?: ComponentsScriptType;
+}
+
+export interface PaypalCommerceScriptOptions {
+    clientId: string;
+    merchantId?: string;
+    currency?: string;
+    commit?: boolean;
+    intent?: 'capture' | 'authorize';
+    disableFunding?: DisableFundingType;
     components?: ComponentsScriptType;
 }

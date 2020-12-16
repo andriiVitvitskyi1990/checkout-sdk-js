@@ -19,6 +19,7 @@ export function getPaypalCommerceMock(): PaypalCommerceSDK {
             SOFORT: 'sofort',
             TRUSTLY: 'trustly',
             VERKKOPANKKI: 'verkkopankki',
+            PRZLEWY24: 'przlewy24',
         },
         Buttons: () => ({
             render: jest.fn(),

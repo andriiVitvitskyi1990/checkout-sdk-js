@@ -12,7 +12,8 @@ export interface ParamsForProvider {
 
 export default class PaypalCommerceRequestSender {
     constructor(
-        private _requestSender: RequestSender
+        private _requestSender: RequestSender,
+        private isAPM?: boolean | undefined
     ) {}
 
     async setupPayment(cartId: string, params: ParamsForProvider = {}): Promise<OrderData> {
@@ -25,6 +26,10 @@ export default class PaypalCommerceRequestSender {
             provider = isCredit ? 'paypalcommercecreditcheckout' : 'paypalcommercecheckout';
         } else if (isCredit) {
             provider = 'paypalcommercecredit';
+        }
+
+        if (this.isAPM) {
+            provider = 'paypalcommercealternativemethodscheckout';
         }
 
         const url = `/api/storefront/payment/${provider}`;
