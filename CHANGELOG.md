@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.118.2-alpha.cb19856c0c232c97f52ffda62731eb384bcebdb8](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.112.0...v1.118.2-alpha.cb19856c0c232c97f52ffda62731eb384bcebdb8) (2020-12-17)
+
+
+### Features
+
+* **forms:** CHECKOUT-4941 Expose customer account fields ([d9ce3db](https://github.com/bigcommerce/checkout-sdk-js/commit/d9ce3db953144b77afa5d0a59ecdc521d6b27f9f))
+* **payment:** INT-2816 Added 3DS to googlepay adyenv2 ([519d036](https://github.com/bigcommerce/checkout-sdk-js/commit/519d036377435e7059be04166a4c4769bdbf86aa))
+* **payment:** INT-3237 Allows reinitialize the cardinal script ([38a2d23](https://github.com/bigcommerce/checkout-sdk-js/commit/38a2d2372aca4ff1cf3071a309af74c597390f55))
+* **payment:** INT-3438 Integrate Barclays strategy ([c53119d](https://github.com/bigcommerce/checkout-sdk-js/commit/c53119d6dc7501f25f601b0ab3ad8f1dcc9439a2))
+* **payment:** INT-3538 Replaced borwser language instead locale variable on Adyenv2 ([b11b877](https://github.com/bigcommerce/checkout-sdk-js/commit/b11b877c42ec4241d5024de543fb480415c519bd))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([a4003ae](https://github.com/bigcommerce/checkout-sdk-js/commit/a4003aee8b35723040562c31c3afd52989848937))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([7b931d8](https://github.com/bigcommerce/checkout-sdk-js/commit/7b931d8d7621a749c722075541a275080279115b))
+* **payment:** PAYPAL-837 Submit cardholder name to PayPal ([b0d0a61](https://github.com/bigcommerce/checkout-sdk-js/commit/b0d0a6133e1986fdcfca4d9cc5b77f3412d8360e))
+* **payment:** PAYPAL-839 Move method_id in execute ([9f8a35a](https://github.com/bigcommerce/checkout-sdk-js/commit/9f8a35a3d959bb4df2c4d12480b67edd035b79b3))
+* **payment:** PAYPAL-848 Add messages to script ([5c75f24](https://github.com/bigcommerce/checkout-sdk-js/commit/5c75f24d892c1234852780151cd8a7c492cab0c0))
+* **payment:** PAYPAL-868 fixed ([d83e9ff](https://github.com/bigcommerce/checkout-sdk-js/commit/d83e9ff891707ff340be9aa295f88577542bba0b))
+* **payment:** PAYPAL-868 fixed ([0110b94](https://github.com/bigcommerce/checkout-sdk-js/commit/0110b94c95d792403d4c2423298b4e20ecf8083b))
+* **payment:** PAYPAL-868 fixed ([28a8b53](https://github.com/bigcommerce/checkout-sdk-js/commit/28a8b53e1b9ae44b0983e098babdcc2b185e5ac6))
+* **payment:** PAYPAL-868 fixed ([ccabf10](https://github.com/bigcommerce/checkout-sdk-js/commit/ccabf10d0a91da58699977bce509a9c28b5e7a13))
+* **payment:** PAYPAL-868 fixed ([862cfc9](https://github.com/bigcommerce/checkout-sdk-js/commit/862cfc958dd8f59d48636a19d6932f70e5ed64c7))
+* **payment:** PAYPAL-868 fixed ([0533c8c](https://github.com/bigcommerce/checkout-sdk-js/commit/0533c8ce8d651b6fbadf0cdb37fe10c0e4615c76))
+* **payment:** PAYPAL-883 apm work via authorize & capture transaction type ([cb19856](https://github.com/bigcommerce/checkout-sdk-js/commit/cb19856c0c232c97f52ffda62731eb384bcebdb8))
+* **shopper:** CHECKOUT-4941 Add Customer Creation functionality ([6a3c5e8](https://github.com/bigcommerce/checkout-sdk-js/commit/6a3c5e864a54b1e637826ad300af2a427ea4bab0))
+
+
+### Bug Fixes
+
+* **common:** CHECKOUT-4571 Remove alpha tags from stable functionality ([b8c1667](https://github.com/bigcommerce/checkout-sdk-js/commit/b8c16672075596af00519ca3901482a922cedbc3))
+* **order:** CHECKOUT-4941 Load form fields when loading order ([6639da0](https://github.com/bigcommerce/checkout-sdk-js/commit/6639da0b8d38a2738597a2b20057ba81ed67367f))
+* **payment:** INT-2816 fix unit test for googlepay-adyenv2-payment ([2bc4ef7](https://github.com/bigcommerce/checkout-sdk-js/commit/2bc4ef707edc755b920273ec10891f2df15982d7))
+* **payment:** INT-2816 fix unit test for googlepay-adyenv2-payment-processor ([46da807](https://github.com/bigcommerce/checkout-sdk-js/commit/46da8074b29b295dcf9516b151e004e4b0579f9d))
+
 ### [1.118.1](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.118.0...v1.118.1) (2020-12-16)
 
 
