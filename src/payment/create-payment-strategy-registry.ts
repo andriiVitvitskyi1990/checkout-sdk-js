@@ -320,7 +320,6 @@ export default function createPaymentStrategyRegistry(
             new PaypalCommerceFundingKeyResolver()
         )
     );
-
     registry.register(PaymentStrategyType.PAYPAL_COMMERCE_ALTERNATIVE_METHODS, () =>
         new PaypalCommerceAlternativeMethodsStrategy(
             store,
