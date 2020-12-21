@@ -328,12 +328,14 @@ export default function createPaymentStrategyRegistry(
         )
     );
     registry.register(PaymentStrategyType.PAYPAL_COMMERCE_ALTERNATIVE_METHODS, () =>
-        new PaypalCommerceAlternativeMethodsStrategy(
+        new PaypalCommercePaymentStrategy(
             store,
             orderActionCreator,
             paymentActionCreator,
             paymentMethodActionCreator,
             createPaypalCommercePaymentProcessor(scriptLoader, requestSender, true)
+            createPaypalCommercePaymentProcessor(scriptLoader, requestSender, true),
+            new PaypalCommerceFundingKeyResolver()
         )
     );
 
