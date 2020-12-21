@@ -50,7 +50,7 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
                     disallowedSources.push(paypal.FUNDING.CREDIT);
                 }
 
-                return paypal.Button.render({
+                return paypal.Buttons({
                     env: paymentMethod.config.testMode ? 'sandbox' : 'production',
                     commit: paypalOptions.shouldProcessPayment ? true : false,
                     funding: {
@@ -64,7 +64,7 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
                     },
                     payment: () => this._setupPayment(paypalOptions.shippingAddress, paypalOptions.onPaymentError),
                     onAuthorize: data => this._tokenizePayment(data, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
-                }, options.containerId);
+                }).render(options.containerId);
             });
     }
 

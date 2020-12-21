@@ -61,7 +61,7 @@ export default class BraintreeScriptLoader {
 
     loadPaypalCheckout(): Promise<BraintreePaypalCheckoutCreator> {
         return this._scriptLoader
-            .loadScript('//js.braintreegateway.com/web/3.59.0/js/paypal-checkout.min.js')
+            .loadScript('//js.braintreegateway.com/web/3.69.0/js/paypal-checkout.min.js')
             .then(() => {
                 if (!this._window.braintree || !this._window.braintree.paypalCheckout) {
                     throw new PaymentMethodClientUnavailableError();
