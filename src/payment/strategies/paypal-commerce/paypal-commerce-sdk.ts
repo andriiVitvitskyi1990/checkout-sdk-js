@@ -185,6 +185,8 @@ export interface PaypalCommerceHostWindow extends Window {
 export interface PaypalCommerceInitializationData {
     clientId: string;
     merchantId?: string;
+    buyerCountry?: string;
+    isDeveloperModeApplicable?: boolean;
     intent?: 'capture' | 'authorize';
     isDeveloperModeApplicable?: boolean;
     buyerCountry?: string;
