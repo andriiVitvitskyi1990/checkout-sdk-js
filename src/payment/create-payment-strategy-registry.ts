@@ -46,7 +46,7 @@ import { NoPaymentDataRequiredPaymentStrategy } from './strategies/no-payment';
 import { OfflinePaymentStrategy } from './strategies/offline';
 import { OffsitePaymentStrategy } from './strategies/offsite';
 import { PaypalExpressPaymentStrategy, PaypalProPaymentStrategy, PaypalScriptLoader } from './strategies/paypal';
-import { createPaypalCommercePaymentProcessor, PaypalCommerceAlternativeMethodsStrategy, PaypalCommerceCreditCardPaymentStrategy, PaypalCommerceFundingKeyResolver, PaypalCommerceHostedForm, PaypalCommercePaymentStrategy } from './strategies/paypal-commerce';
+import { createPaypalCommercePaymentProcessor, PaypalCommerceCreditCardPaymentStrategy, PaypalCommerceFundingKeyResolver, PaypalCommerceHostedForm, PaypalCommercePaymentStrategy } from './strategies/paypal-commerce';
 import { SagePayPaymentStrategy } from './strategies/sage-pay';
 import { SquarePaymentStrategy, SquareScriptLoader } from './strategies/square';
 import { StripeScriptLoader, StripeV3PaymentStrategy } from './strategies/stripev3';
@@ -321,11 +321,10 @@ export default function createPaymentStrategyRegistry(
         )
     );
     registry.register(PaymentStrategyType.PAYPAL_COMMERCE_ALTERNATIVE_METHODS, () =>
-        new PaypalCommerceAlternativeMethodsStrategy(
+        new PaypalCommercePaymentStrategy(
             store,
             orderActionCreator,
             paymentActionCreator,
-            paymentMethodActionCreator,
             createPaypalCommercePaymentProcessor(scriptLoader, requestSender, true),
             new PaypalCommerceFundingKeyResolver()
         )
