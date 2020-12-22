@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.118.2-alpha.def43197aa525fe8c28b45eea3013ce76314cb97](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.112.0...v1.118.2-alpha.def43197aa525fe8c28b45eea3013ce76314cb97) (2020-12-22)
+
+
+### Features
+
+* **forms:** CHECKOUT-4941 Expose customer account fields ([4911495](https://github.com/bigcommerce/checkout-sdk-js/commit/491149574f0212d9bfba25a9cb0890296122a926))
+* **payment:** INT-2816 Added 3DS to googlepay adyenv2 ([a69c120](https://github.com/bigcommerce/checkout-sdk-js/commit/a69c120b80c4d79f62d8600f2e5ae9cf2936010e))
+* **payment:** INT-3237 Allows reinitialize the cardinal script ([38a2d23](https://github.com/bigcommerce/checkout-sdk-js/commit/38a2d2372aca4ff1cf3071a309af74c597390f55))
+* **payment:** INT-3438 Integrate Barclays strategy ([c53119d](https://github.com/bigcommerce/checkout-sdk-js/commit/c53119d6dc7501f25f601b0ab3ad8f1dcc9439a2))
+* **payment:** INT-3538 Replaced borwser language instead locale variable on Adyenv2 ([86f65a6](https://github.com/bigcommerce/checkout-sdk-js/commit/86f65a6e675cef402626dbcf59015820c6ecfb62))
+* **payment:** PAYAPAL-876 implemented polling mechanism ([358b1ff](https://github.com/bigcommerce/checkout-sdk-js/commit/358b1ff7c57834f3cb34fe15ff32b0b4f028a399))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([a4003ae](https://github.com/bigcommerce/checkout-sdk-js/commit/a4003aee8b35723040562c31c3afd52989848937))
+* **payment:** PAYPAL-800 PPCP: Pay-in-3 ([7b931d8](https://github.com/bigcommerce/checkout-sdk-js/commit/7b931d8d7621a749c722075541a275080279115b))
+* **payment:** PAYPAL-837 Submit cardholder name to PayPal ([b0d0a61](https://github.com/bigcommerce/checkout-sdk-js/commit/b0d0a6133e1986fdcfca4d9cc5b77f3412d8360e))
+* **payment:** PAYPAL-839 Move method_id in execute ([9f8a35a](https://github.com/bigcommerce/checkout-sdk-js/commit/9f8a35a3d959bb4df2c4d12480b67edd035b79b3))
+* **payment:** PAYPAL-848 Add messages to script ([228989d](https://github.com/bigcommerce/checkout-sdk-js/commit/228989db860c7040385f3475d7084f0b44ee16ee))
+* **payment:** PAYPAL-868 fixed ([862cfc9](https://github.com/bigcommerce/checkout-sdk-js/commit/862cfc958dd8f59d48636a19d6932f70e5ed64c7))
+* **payment:** PAYPAL-868 fixed ([ccabf10](https://github.com/bigcommerce/checkout-sdk-js/commit/ccabf10d0a91da58699977bce509a9c28b5e7a13))
+* **payment:** PAYPAL-868 fixed ([d83e9ff](https://github.com/bigcommerce/checkout-sdk-js/commit/d83e9ff891707ff340be9aa295f88577542bba0b))
+* **payment:** PAYPAL-868 fixed ([28a8b53](https://github.com/bigcommerce/checkout-sdk-js/commit/28a8b53e1b9ae44b0983e098babdcc2b185e5ac6))
+* **payment:** PAYPAL-868 fixed ([0110b94](https://github.com/bigcommerce/checkout-sdk-js/commit/0110b94c95d792403d4c2423298b4e20ecf8083b))
+* **payment:** PAYPAL-868 fixed ([0533c8c](https://github.com/bigcommerce/checkout-sdk-js/commit/0533c8ce8d651b6fbadf0cdb37fe10c0e4615c76))
+* **payment:** PAYPAL-876 added polling mechanism ([d4b216d](https://github.com/bigcommerce/checkout-sdk-js/commit/d4b216d42ed63851191818f2123a25ea1d5ffbaf))
+* **payment:** PAYPAL-883 apm work via authorize & capture transaction type ([370293d](https://github.com/bigcommerce/checkout-sdk-js/commit/370293da16cb655a0253f97cfb3a63a9861f5ba4))
+* **payments:** PAYPAL-883 added new strategy ([b88b940](https://github.com/bigcommerce/checkout-sdk-js/commit/b88b940ce59a0a6e75906b1c38d18ab537e687bb))
+* **payments:** Paypal-883 test ([1bd6026](https://github.com/bigcommerce/checkout-sdk-js/commit/1bd60265643922a8de0ff23dd09cb17e51a4db04))
+* **payments:** PAYPAL-APM_TEST ([a53cc41](https://github.com/bigcommerce/checkout-sdk-js/commit/a53cc416014c7f8cc4d536e00a7b966ef4884def))
+* **payments:** PAYPAL-APM_TEST ([8fdcb32](https://github.com/bigcommerce/checkout-sdk-js/commit/8fdcb3234e4a713a4e3e255fee977a4a863b86c8))
+* **payments:** PAYPAL-APM_TEST ([def4319](https://github.com/bigcommerce/checkout-sdk-js/commit/def43197aa525fe8c28b45eea3013ce76314cb97))
+* **payments:** test ([faac262](https://github.com/bigcommerce/checkout-sdk-js/commit/faac2626ce9b3aa3838d1f21d8f9616784cb167a))
+* **shopper:** CHECKOUT-4941 Add Customer Creation functionality ([a2590d8](https://github.com/bigcommerce/checkout-sdk-js/commit/a2590d89439da1aa755399175ed82511cb5f1a96))
+
+
+### Bug Fixes
+
+* **common:** CHECKOUT-4571 Remove alpha tags from stable functionality ([b8c1667](https://github.com/bigcommerce/checkout-sdk-js/commit/b8c16672075596af00519ca3901482a922cedbc3))
+* **order:** CHECKOUT-4941 Load form fields when loading order ([d48ecee](https://github.com/bigcommerce/checkout-sdk-js/commit/d48eceeb936e30485e834c6c486448412163f776))
+* **payment:** INT-2816 fix unit test for googlepay-adyenv2-payment ([02633ec](https://github.com/bigcommerce/checkout-sdk-js/commit/02633ec366439072712c62e863ad1525f91fd279))
+* **payment:** INT-2816 fix unit test for googlepay-adyenv2-payment-processor ([88b2063](https://github.com/bigcommerce/checkout-sdk-js/commit/88b206398eea949cc8b46623a5dbc0f1a8fc1cfc))
+
 ### [1.118.2-alpha.5dc0f4a99a46939d7e1c3c122f5cc7b697693671](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.118.2-alpha.4aa4cd7855eb64806b0257f061396b4e1f67eed1...v1.118.2-alpha.5dc0f4a99a46939d7e1c3c122f5cc7b697693671) (2020-12-21)
 
 
