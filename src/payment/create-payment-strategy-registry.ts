@@ -52,7 +52,6 @@ import { createPaypalCommercePaymentProcessor,
     PaypalCommerceHostedForm,
     PaypalCommercePaymentStrategy,
     PaypalCommerceRequestSender } from './strategies/paypal-commerce';
-import { createPaypalCommercePaymentProcessor, PaypalCommerceAlternativeMethodsStrategy, PaypalCommerceCreditCardPaymentStrategy, PaypalCommerceFundingKeyResolver, PaypalCommerceHostedForm, PaypalCommercePaymentStrategy } from './strategies/paypal-commerce';
 import { SagePayPaymentStrategy } from './strategies/sage-pay';
 import { SquarePaymentStrategy, SquareScriptLoader } from './strategies/square';
 import { StripeScriptLoader, StripeV3PaymentStrategy } from './strategies/stripev3';
@@ -332,10 +331,9 @@ export default function createPaymentStrategyRegistry(
             store,
             orderActionCreator,
             paymentActionCreator,
-            paymentMethodActionCreator,
-            createPaypalCommercePaymentProcessor(scriptLoader, requestSender, true)
             createPaypalCommercePaymentProcessor(scriptLoader, requestSender, true),
-            new PaypalCommerceFundingKeyResolver()
+            new PaypalCommerceFundingKeyResolver(),
+            new PaypalCommerceRequestSender(requestSender)
         )
     );
 

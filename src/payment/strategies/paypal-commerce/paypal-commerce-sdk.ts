@@ -188,8 +188,6 @@ export interface PaypalCommerceInitializationData {
     buyerCountry?: string;
     isDeveloperModeApplicable?: boolean;
     intent?: 'capture' | 'authorize';
-    isDeveloperModeApplicable?: boolean;
-    buyerCountry?: string;
     isPayPalCreditAvailable?: boolean;
     isProgressiveOnboardingAvailable?: boolean;
     clientToken?: string;
