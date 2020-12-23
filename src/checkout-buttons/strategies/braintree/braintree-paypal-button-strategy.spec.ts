@@ -14,9 +14,7 @@ import { FormFieldsActionCreator, FormFieldsRequestSender } from '../../../form'
 import { getBraintreePaypal } from '../../../payment/payment-methods.mock';
 import { BraintreeDataCollector, BraintreePaypalCheckout, BraintreeScriptLoader, BraintreeSDKCreator } from '../../../payment/strategies/braintree';
 import { getDataCollectorMock, getPaypalCheckoutMock } from '../../../payment/strategies/braintree/braintree.mock';
-import {
-    PaypalButtonOptions,
-    PaypalButtonRender,
+import { PaypalButtonOptions,
     PaypalScriptLoader,
     PaypalSDK
 } from '../../../payment/strategies/paypal';

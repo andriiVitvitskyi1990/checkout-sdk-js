@@ -25,7 +25,6 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         const { paymentMethods: { getPaymentMethodOrThrow }, cart: { getCartOrThrow } } = this._store.getState();
         const { initializationData } = getPaymentMethodOrThrow(methodId, gatewayId);
         const { orderId, buttonStyle } = initializationData;
-
         if (orderId) {
             this._orderId = orderId;
 
