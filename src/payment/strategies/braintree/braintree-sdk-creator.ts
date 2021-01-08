@@ -49,16 +49,17 @@ export default class BraintreeSDKCreator {
         return this._paypal;
     }
 
-    getPaypalCheckout(): Promise<BraintreePaypalCheckout> {
+    getPaypalCheckout(): any {
         if (!this._paypalCheckout) {
             this._paypalCheckout = Promise.all([
                 this.getClient(),
                 this._braintreeScriptLoader.loadPaypalCheckout(),
             ])
-                .then(([client, paypalCheckout]) => paypalCheckout.create({ client }));
+                .then(([client, paypalCheckout]) => paypalCheckout.create({ client }, (error: any, instance: any) =>  {
+                    console.log(error);
+                  return   instance.loadPayPalSDK();
+                }));
         }
-
-        return this._paypalCheckout;
     }
 
     get3DS(): Promise<BraintreeThreeDSecure> {
