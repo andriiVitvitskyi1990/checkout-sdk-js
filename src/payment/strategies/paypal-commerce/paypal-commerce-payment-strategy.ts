@@ -33,8 +33,7 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         private _paypalCommercePaymentProcessor: PaypalCommercePaymentProcessor,
         private _paypalCommerceFundingKeyResolver: PaypalCommerceFundingKeyResolver,
         private _paypalCommerceRequestSender: PaypalCommerceRequestSender,
-        private _pollingInterval?: number,
-        private _pollingTimer?: number,
+        private _pollingInterval?: number
     ) {}
 
     async initialize({ gatewayId, methodId, paypalcommerce }: PaymentInitializeOptions): Promise<InternalCheckoutSelectors> {
@@ -62,7 +61,10 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         const paramsScript = this._getOptionsScript(initializationData, currencyCode);
         const buttonParams: ButtonsOptions = {
             style: buttonStyle,
-            onApprove: data => this._tokenizePayment(data, submitForm),
+            onApprove: data => {
+                this._deinitializePollingTimer(this._pollingInterval);
+                this._tokenizePayment(data, submitForm);
+            },
             onClick: async (_, actions) => {
                 this._initializePollingMechanism(submitForm, gatewayId);
 
@@ -70,8 +72,7 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
             },
             onCancel: () => {
                 this._deinitializePollingTimer(this._pollingInterval);
-                this._deinitializePollingTimer(this._pollingTimer);
-                },
+            },
         };
 
         await this._paypalCommercePaymentProcessor.initialize(paramsScript);
@@ -117,7 +118,6 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     }
 
     async deinitialize(): Promise<InternalCheckoutSelectors> {
-        this._deinitializePollingTimer(this._pollingTimer);
         this._deinitializePollingTimer(this._pollingInterval);
         this._orderId = undefined;
         this._paypalCommercePaymentProcessor.deinitialize();
@@ -125,24 +125,30 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         return Promise.resolve(this._store.getState());
     }
 
-    private _initializePollingMechanism(submitForm: () => void, gatewayId?: string) {
-       this._initializePollingTimer();
-       this._pollingInterval = window.setTimeout(async () =>  {
+    private _initializePollingMechanism(submitForm: () => void, gatewayId?: string, timer?: number) {
+        if (!timer) {
+            timer = 0;
+        }
+        this._pollingInterval = window.setTimeout(async () =>  {
             try {
+                if (timer !== undefined) {
+                    timer += POLLING_INTERVAL;
+                }
                 if (gatewayId === PaymentStrategyType.PAYPAL_COMMERCE_ALTERNATIVE_METHODS) {
-                    console.log('%c POLLING TIMEOUT', 'color: green');
                     const res = await this._paypalCommerceRequestSender.getOrderStatus();
                     if (res.status.toLowerCase() === ORDER_STATUS_APPROVED) {
-                        this._deinitializePollingTimer(this._pollingTimer);
                         this._deinitializePollingTimer(this._pollingInterval);
                         this._tokenizePayment({orderID: this._paypalCommercePaymentProcessor.getOrderId()}, submitForm);
                     } else {
-                        this._initializePollingMechanism(submitForm, gatewayId)
+                        if (timer !== undefined && timer < POLLING_MAX_TIME) {
+                            this._initializePollingMechanism(submitForm, gatewayId, timer);
+                        } else {
+                            this._deinitializePollingTimer(this._pollingInterval);
+                        }
                     }
                 }
             } catch (e) {
                 this._deinitializePollingTimer(this._pollingInterval);
-                this._deinitializePollingTimer(this._pollingTimer);
             }
         }, POLLING_INTERVAL);
     }
@@ -150,16 +156,6 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     private _deinitializePollingTimer(timer?: number) {
         if (timer) {
             clearTimeout(timer);
-            timer = 0;
-        }
-    }
-
-    private _initializePollingTimer(): void {
-        if(!this._pollingTimer) {
-            this._pollingTimer = window.setTimeout(() => {
-                this._deinitializePollingTimer(this._pollingInterval);
-                this._deinitializePollingTimer(this._pollingTimer);
-            }, POLLING_MAX_TIME);
         }
     }
 
