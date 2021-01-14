@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d29cf143-c35e-457d-b7d7-42e0b1eb03e2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dist/checkout-button.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-button.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-button.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-button.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-button.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-button.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-button.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-sdk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-sdk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-sdk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-sdk.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-sdk.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/checkout-sdk.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/checkout-sdk.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/embedded-checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/embedded-checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/embedded-checkout.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/embedded-checkout.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/embedded-checkout.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/embedded-checkout.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/embedded-checkout.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/embedded-checkout.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/hosted-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/hosted-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/hosted-form.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/hosted-form.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/hosted-form.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/hosted-form.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/hosted-form.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/hosted-form.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/internal-mappers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/internal-mappers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/internal-mappers.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/internal-mappers.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/internal-mappers.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/internal-mappers.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/internal-mappers.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/internal-mappers.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/payment/strategies/paypal-commerce/paypal-commerce-payment-strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/payment/strategies/paypal-commerce/paypal-commerce-payment-strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/payment/strategies/paypal-commerce/paypal-commerce-sdk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/payment/strategies/paypal-commerce/paypal-commerce-sdk.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
