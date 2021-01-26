@@ -86,10 +86,6 @@ export default class PaypalCommercePaymentProcessor {
         return this._orderId;
     }
 
-    getButtons() {
-        return this._paypalButtons;
-    }
-
     renderMessages(cartTotal: number, container: string): PaypalCommerceMessages {
         if (!this._paypal || !this._paypal.Messages) {
             throw new PaymentMethodClientUnavailableError();

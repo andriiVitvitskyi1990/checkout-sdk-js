@@ -152,12 +152,10 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
         }, POLLING_INTERVAL);
     }
 
-    private _reinitializeButtons({ gatewayId, methodId, paypalcommerce }: PaymentInitializeOptions) {
-        this._deinitializePollingTimer(gatewayId);
-        // @ts-ignore
-        this._paypalCommercePaymentProcessor.getButtons().close();
+    private async _reinitializeButtons({ gatewayId, methodId, paypalcommerce }: PaymentInitializeOptions) {
         this.deinitialize({methodId, gatewayId});
         this.initialize({ gatewayId, methodId, paypalcommerce });
+        throw new InvalidArgumentError('Unable to proceed');
     }
 
     private _deinitializePollingTimer(gatewayId?: string) {
