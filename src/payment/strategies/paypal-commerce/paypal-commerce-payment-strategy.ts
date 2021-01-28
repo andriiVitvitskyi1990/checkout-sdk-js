@@ -22,7 +22,7 @@ import { ApproveDataOptions,
 const ORDER_STATUS_APPROVED = 'APPROVED';
 const ORDER_STATUS_CREATED = 'CREATED';
 const POLLING_INTERVAL = 3000;
-const POLLING_MAX_TIME = 600000;
+const POLLING_MAX_TIME = 20000;
 
 export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
     private _orderId?: string;
