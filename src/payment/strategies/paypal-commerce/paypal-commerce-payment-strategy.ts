@@ -75,7 +75,7 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
             onCancel: () => {
                 this._deinitializePollingTimer(gatewayId);
             },
-            onError: () =>  {
+            onError: () => {
                 this._deinitializePollingTimer(gatewayId);
             },
         };

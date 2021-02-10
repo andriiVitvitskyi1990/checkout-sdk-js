@@ -210,6 +210,7 @@ describe('PaypalCommercePaymentStrategy', () => {
                 onApprove: expect.any(Function),
                 onClick: expect.any(Function),
                 onCancel: expect.any(Function),
+                onError: expect.any(Function),
             };
 
             const optionalParams = { fundingKey: 'PAYLATER', paramsForProvider: { isCheckout: true }, onRenderButton: expect.any(Function) };
@@ -233,6 +234,7 @@ describe('PaypalCommercePaymentStrategy', () => {
                     {   onApprove: expect.any(Function),
                         onClick: expect.any(Function),
                         onCancel: expect.any(Function),
+                        onError: expect.any(Function),
                         style: paymentMethod.initializationData.buttonStyle },
                     {   paramsForProvider: { isCheckout: true },
                         onRenderButton: expect.any(Function),
