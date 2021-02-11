@@ -228,6 +228,8 @@ export interface BraintreeRequestData {
     data: {
         creditCard: {
             billingAddress?: {
+                countryCodeAlpha2: string;
+                locality: string;
                 countryName: string;
                 postalCode: string;
                 streetAddress: string;
