@@ -112,7 +112,7 @@ describe('BraintreePaypalButtonStrategy', () => {
             ]));
 
         jest.spyOn(braintreeSDKCreator, 'getPaypalCheckout')
-            .mockImplementation(callback => {
+            .mockImplementation(({}, callback) => {
                 callback(paypalCheckout);
 
                 return Promise.resolve(paypalCheckout);
@@ -196,10 +196,7 @@ describe('BraintreePaypalButtonStrategy', () => {
                 label: undefined,
                 shape: 'rect',
             },
-            funding: {
-                allowed: [],
-                disallowed: [paypal.FUNDING.CREDIT],
-            },
+            fundingSource: paypal.FUNDING.PAYPAL,
         });
     });
 
@@ -535,10 +532,7 @@ describe('BraintreePaypalButtonStrategy', () => {
                     label: 'credit',
                     shape: 'rect',
                 },
-                funding: {
-                    allowed: [paypal.FUNDING.CREDIT],
-                    disallowed: [],
-                },
+                fundingSource: paypal.FUNDING.PAYPAL,
             });
         });
 
