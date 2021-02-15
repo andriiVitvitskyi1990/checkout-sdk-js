@@ -2,6 +2,7 @@ export interface PaypalSDK {
     Button: PaypalButton;
     checkout: PaypalExpressCheckout;
     FUNDING: PaypalFundingTypeList;
+    Buttons(options: PaypalButtonOptions): PaypalButtonRender;
 }
 
 export interface PaypalFundingTypeList {
@@ -11,6 +12,10 @@ export interface PaypalFundingTypeList {
 
 export interface PaypalButton {
     render(options: PaypalButtonOptions, container: string): void;
+}
+
+export interface PaypalButtonRender {
+    render(container: string): void;
 }
 
 export interface PaypalButtonOptions {
@@ -133,4 +138,5 @@ export interface PaypalExpressCheckoutOptions {
 
 export interface PaypalHostWindow extends Window {
     paypal?: PaypalSDK;
+    flag?: boolean;
 }

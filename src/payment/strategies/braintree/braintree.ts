@@ -1,5 +1,7 @@
+import { BraintreePaypalButtonInitializeOptions } from '../../../checkout-buttons/strategies/braintree';
+import { PaymentMethod } from '../../index';
 import { GooglePaymentData, GooglePayBraintreeDataRequest, GooglePayBraintreePaymentDataRequestV1, GooglePayCreator, TokenizePayload } from '../googlepay';
-import { PaypalAuthorizeData, PaypalSDK } from '../paypal';
+import { PaypalAuthorizeData, PaypalButtonOptions, PaypalButtonRender, PaypalSDK } from '../paypal';
 
 import { VisaCheckoutInitOptions, VisaCheckoutPaymentSuccessPayload, VisaCheckoutTokenizedPayload } from './visacheckout';
 
@@ -15,7 +17,7 @@ export interface BraintreeSDK {
 }
 
 export interface BraintreeModuleCreator<TInstance, TOptions = BraintreeModuleCreatorConfig> {
-    create(config: TOptions): Promise<TInstance>;
+    create(config: TOptions, callback?: any): Promise<TInstance>;
 }
 
 export interface BraintreeModuleCreatorConfig {
@@ -189,6 +191,7 @@ export interface BraintreePaypal {
     closeWindow(): void;
     focusWindow(): void;
     tokenize(options: BraintreePaypalRequest): Promise<BraintreeTokenizePayload>;
+    Buttons?(options: PaypalButtonOptions): PaypalButtonRender;
 }
 
 export interface BraintreePaypalCheckout {
@@ -347,4 +350,10 @@ interface BraintreeThreeDSecureVerificationData {
         liabilityShiftPossible: boolean;
         liabilityShifted: boolean;
     };
+}
+
+export interface RenderButtonsData {
+    paymentMethod: PaymentMethod;
+    paypalOptions: BraintreePaypalButtonInitializeOptions;
+    container: string;
 }

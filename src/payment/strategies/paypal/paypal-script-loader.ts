@@ -21,7 +21,7 @@ export default class PaypalScriptLoader {
             ? await this._scriptLoader.loadScript(scriptSrc, options)
             : await this._scriptLoader.loadScript(scriptSrc);
 
-        if (!this._window.paypal) {
+        if (!this._window.paypal ) {
             throw new PaymentMethodClientUnavailableError();
         }
 

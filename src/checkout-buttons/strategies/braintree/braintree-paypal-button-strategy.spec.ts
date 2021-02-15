@@ -90,6 +90,9 @@ describe('BraintreePaypalButtonStrategy', () => {
         jest.spyOn(paypalScriptLoader, 'loadPaypal')
             .mockReturnValue(Promise.resolve(paypal));
 
+        jest.spyOn(braintreeSDKCreator, 'getPaypal')
+            .mockReturnValue(Promise.resolve(paypal));
+
         jest.spyOn(formPoster, 'postForm')
             .mockImplementation(() => {});
 
@@ -97,7 +100,6 @@ describe('BraintreePaypalButtonStrategy', () => {
             store,
             checkoutActionCreator,
             braintreeSDKCreator,
-            paypalScriptLoader,
             formPoster
         );
     });
@@ -109,7 +111,6 @@ describe('BraintreePaypalButtonStrategy', () => {
                 store,
                 checkoutActionCreator,
                 braintreeSDKCreator,
-                paypalScriptLoader,
                 formPoster
             );
 
@@ -123,13 +124,13 @@ describe('BraintreePaypalButtonStrategy', () => {
         await strategy.initialize(options);
 
         expect(braintreeSDKCreator.getPaypalCheckout).toHaveBeenCalled();
-        expect(paypalScriptLoader.loadPaypal).toHaveBeenCalled();
+        expect(braintreeSDKCreator.getPaypal).toHaveBeenCalled();
     });
 
     it('throws error if unable to initialize Braintree or PayPal JS client', async () => {
         const expectedError = new Error('Unable to load JS client');
 
-        jest.spyOn(paypalScriptLoader, 'loadPaypal')
+        jest.spyOn(braintreeSDKCreator, 'getPaypal')
             .mockReturnValue(Promise.reject(expectedError));
 
         try {
@@ -142,7 +143,7 @@ describe('BraintreePaypalButtonStrategy', () => {
     it('renders PayPal checkout button', async () => {
         await strategy.initialize(options);
 
-        expect(paypal.Button.render).toHaveBeenCalledWith({
+        expect(paypal.Buttons).toHaveBeenCalledWith({
             commit: false,
             env: 'production',
             onAuthorize: expect.any(Function),
@@ -218,7 +219,6 @@ describe('BraintreePaypalButtonStrategy', () => {
             store,
             checkoutActionCreator,
             braintreeSDKCreator,
-            paypalScriptLoader,
             formPoster
         );
 
@@ -472,7 +472,6 @@ describe('BraintreePaypalButtonStrategy', () => {
                 store,
                 checkoutActionCreator,
                 braintreeSDKCreator,
-                paypalScriptLoader,
                 formPoster,
                 true
             );
