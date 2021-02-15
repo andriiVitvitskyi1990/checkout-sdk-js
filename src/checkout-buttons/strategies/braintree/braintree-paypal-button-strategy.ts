@@ -83,7 +83,7 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
                     label: this._offerCredit ? 'credit' : undefined,
                     ...pick(paypalOptions.style, 'layout', 'size', 'color', 'label', 'shape', 'tagline', 'fundingicons'),
                 },
-                createOrder: () => this._setupPayment(paypalOptions.shippingAddress, paypalOptions.onPaymentError, paypalCheckoutInstance),
+                createOrder: () => this._setupPayment(paypalCheckoutInstance, paypalOptions.shippingAddress, paypalOptions.onPaymentError),
                 onApprove: (data: PaypalAuthorizeData) => this._tokenizePayment(data, paypalCheckoutInstance, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
             }).render(container);
         }
@@ -99,9 +99,9 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
     }
 
     private _setupPayment(
+        paypalCheckoutInstance: PaypalClientInstance,
         address?: Address | null,
-        onError?: (error: BraintreeError | StandardError) => void,
-        paypalCheckoutInstance?: any
+        onError?: (error: BraintreeError | StandardError) => void
     ): Promise<string> {
         return this._store.dispatch(this._checkoutActionCreator.loadDefaultCheckout())
             .then(state => {
