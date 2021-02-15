@@ -8,6 +8,7 @@ export interface PaypalSDK {
 export interface PaypalFundingTypeList {
     CARD: string;
     CREDIT: string;
+    PAYPAL: string;
 }
 
 export interface PaypalButton {
@@ -23,6 +24,7 @@ export interface PaypalButtonOptions {
     commit?: boolean;
     style?: PaypalButtonStyleOptions;
     funding?: PaypalFundingType;
+    fundingSource?: string;
     client?: PaypalClientToken;
     payment?(data?: PaypalAuthorizeData, actions?: PaypalActions): Promise<any>;
     onAuthorize?(data: PaypalAuthorizeData, actions?: PaypalActions): Promise<any>;

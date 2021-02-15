@@ -70,10 +70,7 @@ export default class BraintreeSDKCreator {
                     instance.loadPayPalSDK(() => {
                         renderButtonCallback(instance);
                     });
-                }))
-                .catch(error => {
-                    throw error;
-                });
+                }));
         }
 
         return this._paypalCheckout;

@@ -60,30 +60,20 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
     }
 
     renderButtons(paypalCheckoutInstance: PaypalClientInstance) {
-        const allowedSources = [];
-        const disallowedSources = [];
         const { paypalOptions, paymentMethod, container } = this._renderButtonsData as RenderButtonsData;
         const { paypal } = this._window;
 
         if (paypal) {
-            if (paypalOptions.allowCredit) {
-                allowedSources.push(paypal.FUNDING.CREDIT);
-            } else {
-                disallowedSources.push(paypal.FUNDING.CREDIT);
-            }
             paypal.Buttons({
                 env: paymentMethod.config.testMode ? 'sandbox' : 'production',
-                commit: paypalOptions.shouldProcessPayment ? true : false,
-                funding: {
-                    allowed: allowedSources,
-                    disallowed: disallowedSources,
-                },
+                commit: false,
+                fundingSource: paypal.FUNDING.PAYPAL,
                 style: {
                     shape: 'rect',
                     label: this._offerCredit ? 'credit' : undefined,
                     ...pick(paypalOptions.style, 'layout', 'size', 'color', 'label', 'shape', 'tagline', 'fundingicons'),
                 },
-                createOrder: () => this._setupPayment(paypalOptions.shippingAddress, paypalOptions.onPaymentError, paypalCheckoutInstance),
+                createOrder: () => this._setupPayment(paypalCheckoutInstance, paypalOptions.shippingAddress, paypalOptions.onPaymentError),
                 onApprove: (data: PaypalAuthorizeData) => this._tokenizePayment(data, paypalCheckoutInstance, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
             }).render(container);
         }
@@ -99,9 +89,9 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
     }
 
     private _setupPayment(
+        paypalCheckoutInstance: PaypalClientInstance,
         address?: Address | null,
-        onError?: (error: BraintreeError | StandardError) => void,
-        paypalCheckoutInstance?: any
+        onError?: (error: BraintreeError | StandardError) => void
     ): Promise<string> {
         return this._store.dispatch(this._checkoutActionCreator.loadDefaultCheckout())
             .then(state => {
