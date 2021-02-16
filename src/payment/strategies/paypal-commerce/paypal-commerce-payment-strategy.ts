@@ -85,9 +85,10 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
                 this._deinitializePollingTimer(gatewayId);
                 this._loadingIndicator?.hide();
             },
-            onError: () => {
+            onError: (e: Error) => {
                 this._deinitializePollingTimer(gatewayId);
                 this._loadingIndicator?.hide();
+                paypalcommerce.onError?.(e);
             },
         };
 
