@@ -2,6 +2,11 @@ export interface PaypalSDK {
     Button: PaypalButton;
     checkout: PaypalExpressCheckout;
     FUNDING: PaypalFundingTypeList;
+    Buttons(options: PaypalButtonOptions): PaypalButtonRender;
+}
+
+export interface PaypalButtonRender {
+    render(container: string): void;
 }
 
 export interface PaypalFundingTypeList {

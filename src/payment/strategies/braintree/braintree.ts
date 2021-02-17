@@ -1,5 +1,5 @@
 import { GooglePaymentData, GooglePayBraintreeDataRequest, GooglePayBraintreePaymentDataRequestV1, GooglePayCreator, TokenizePayload } from '../googlepay';
-import { PaypalAuthorizeData, PaypalSDK } from '../paypal';
+import { PaypalAuthorizeData, PaypalButtonOptions, PaypalButtonRender, PaypalSDK } from '../paypal';
 
 import { VisaCheckoutInitOptions, VisaCheckoutPaymentSuccessPayload, VisaCheckoutTokenizedPayload } from './visacheckout';
 
@@ -189,6 +189,7 @@ export interface BraintreePaypal {
     closeWindow(): void;
     focusWindow(): void;
     tokenize(options: BraintreePaypalRequest): Promise<BraintreeTokenizePayload>;
+    Buttons?(options: PaypalButtonOptions): PaypalButtonRender;
 }
 
 export interface BraintreePaypalCheckout {
