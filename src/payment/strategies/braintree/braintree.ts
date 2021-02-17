@@ -16,6 +16,7 @@ export interface BraintreeSDK {
 
 export interface BraintreeModuleCreator<TInstance, TOptions = BraintreeModuleCreatorConfig> {
     create(config: TOptions): Promise<TInstance>;
+    create(config: TOptions, callback?: any): Promise<TInstance>;
 }
 
 export interface BraintreeModuleCreatorConfig {

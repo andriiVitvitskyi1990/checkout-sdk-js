@@ -97,7 +97,6 @@ describe('BraintreePaypalButtonStrategy', () => {
             store,
             checkoutActionCreator,
             braintreeSDKCreator,
-            paypalScriptLoader,
             formPoster
         );
     });
@@ -109,7 +108,6 @@ describe('BraintreePaypalButtonStrategy', () => {
                 store,
                 checkoutActionCreator,
                 braintreeSDKCreator,
-                paypalScriptLoader,
                 formPoster
             );
 
@@ -218,7 +216,6 @@ describe('BraintreePaypalButtonStrategy', () => {
             store,
             checkoutActionCreator,
             braintreeSDKCreator,
-            paypalScriptLoader,
             formPoster
         );
 
@@ -472,7 +469,6 @@ describe('BraintreePaypalButtonStrategy', () => {
                 store,
                 checkoutActionCreator,
                 braintreeSDKCreator,
-                paypalScriptLoader,
                 formPoster,
                 true
             );
