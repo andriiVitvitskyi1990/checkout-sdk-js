@@ -59,13 +59,14 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
 
                 console.log('%c PAYPAL', 'color: orange', this._window.paypal, this._paypalScriptLoader, paypal);
                 console.log('%c OPTIONS', 'color: green', options.containerId);
+                const container = `#${options.containerId}`;
 
                 return this._window.paypal.Buttons({
                     env: paymentMethod.config.testMode ? 'sandbox' : 'production',
                     commit: paypalOptions.shouldProcessPayment ? true : false,
                     funding: {
-                        allowed: allowedSources,
-                        disallowed: disallowedSources,
+                        allowed: ['credit'],
+                        disallowed: [],
                     },
                     style: {
                         shape: 'rect',
@@ -74,7 +75,7 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
                     },
                     payment: () => this._setupPayment(paypalOptions.shippingAddress, paypalOptions.onPaymentError),
                     onAuthorize: (data: any) => this._tokenizePayment(data, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
-                }).render(options.containerId);
+                }).render(container);
             });
     }
 
