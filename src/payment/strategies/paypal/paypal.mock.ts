@@ -18,3 +18,20 @@ export function getPaypalMock(): PaypalSDK {
         Buttons: jest.fn(),
     };
 }
+
+export function getPaypalButtonsMock() {
+    return {
+        commit: false,
+        env: 'production',
+        onAuthorize: jest.fn(),
+        payment: jest.fn(),
+        style: {
+        label: undefined,
+            shape: 'rect',
+    },
+        funding: {
+            allowed: [],
+            disallowed: [],
+        },
+    };
+}
