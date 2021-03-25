@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.130.1-alpha.774e60223f62704f665d7618d470f8419c2fdf2e](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.130.1-alpha.597cc85497880df6ba8343a442c4c33e7b6d5920...v1.130.1-alpha.774e60223f62704f665d7618d470f8419c2fdf2e) (2021-03-25)
+
+
+### Features
+
+* **payment:** PAYPAL-863 test ([774e602](https://github.com/bigcommerce/checkout-sdk-js/commit/774e60223f62704f665d7618d470f8419c2fdf2e))
+
 ### [1.130.1-alpha.597cc85497880df6ba8343a442c4c33e7b6d5920](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.112.0...v1.130.1-alpha.597cc85497880df6ba8343a442c4c33e7b6d5920) (2021-03-25)
 
 
