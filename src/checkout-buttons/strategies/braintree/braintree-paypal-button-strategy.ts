@@ -67,7 +67,6 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
             paypal.Buttons({
                 env: paymentMethod.config.testMode ? 'sandbox' : 'production',
                 commit: false,
-                fundingSource: paypal.FUNDING.PAYPAL,
                 style: {
                     shape: 'rect',
                     label: this._offerCredit ? 'credit' : undefined,
