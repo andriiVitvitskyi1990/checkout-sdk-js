@@ -196,10 +196,7 @@ describe('BraintreePaypalButtonStrategy', () => {
                 label: undefined,
                 shape: 'rect',
             },
-            funding: {
-                allowed: [],
-                disallowed: [paypal.FUNDING.CREDIT],
-            },
+            fundingSource: 'paypal',
         });
     });
 
@@ -535,10 +532,7 @@ describe('BraintreePaypalButtonStrategy', () => {
                     label: 'credit',
                     shape: 'rect',
                 },
-                funding: {
-                    allowed: [paypal.FUNDING.CREDIT],
-                    disallowed: [],
-                },
+               fundingSource: 'paypal',
             });
         });
 
