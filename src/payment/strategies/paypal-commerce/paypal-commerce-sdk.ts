@@ -191,6 +191,7 @@ export interface PaypalCommerceInitializationData {
     isPayPalCreditAvailable?: boolean;
     isProgressiveOnboardingAvailable?: boolean;
     clientToken?: string;
+    attributionId?: string;
 }
 
 export type DisableFundingType = Array<'credit' | 'card'>;
