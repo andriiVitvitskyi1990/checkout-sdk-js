@@ -17,6 +17,7 @@ export interface PaypalButton {
 
 export interface PaypalButtonRender {
     render(container: string): void;
+    isEligible(): boolean;
 }
 
 export interface PaypalButtonOptions {

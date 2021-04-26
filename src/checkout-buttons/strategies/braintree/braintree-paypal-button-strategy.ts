@@ -66,18 +66,27 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
         const { paypal } = this._window;
 
         if (paypal) {
-            paypal.Buttons({
-                env: paymentMethod.config.testMode ? 'sandbox' : 'production',
-                commit: false,
-                fundingSource: paypal.FUNDING.PAYPAL,
-                style: {
-                    shape: 'rect',
-                    label: this._offerCredit ? 'credit' : undefined,
-                    ...pick(paypalOptions.style, 'layout', 'size', 'color', 'label', 'shape', 'tagline', 'fundingicons'),
-                },
-                createOrder: () => this._setupPayment(paypalCheckoutInstance, paypalOptions.shippingAddress, paypalOptions.onPaymentError),
-                onApprove: (data: PaypalAuthorizeData) => this._tokenizePayment(data, paypalCheckoutInstance, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
-            }).render(container);
+            const FUNDING_SOURCES = [];
+            for (const fundingKey in paypal.FUNDING) {
+                if (fundingKey !== 'card') {
+                    FUNDING_SOURCES.push(fundingKey.toLowerCase());
+                }
+            }
+
+            FUNDING_SOURCES.forEach(source => {
+             paypal.Buttons({
+                    env: paymentMethod.config.testMode ? 'sandbox' : 'production',
+                    fundingSource: source,
+                    commit: false,
+                    style: {
+                        shape: 'rect',
+                        label: this._offerCredit ? 'credit' : undefined,
+                        ...pick(paypalOptions.style, 'layout', 'size', 'color', 'label', 'shape', 'tagline', 'fundingicons'),
+                    },
+                    createOrder: () => this._setupPayment(paypalCheckoutInstance, paypalOptions.shippingAddress, paypalOptions.onPaymentError),
+                    onApprove: (data: PaypalAuthorizeData) => this._tokenizePayment(data, paypalCheckoutInstance, paypalOptions.shouldProcessPayment, paypalOptions.onAuthorizeError),
+                }).render(container);
+            });
         }
     }
 
