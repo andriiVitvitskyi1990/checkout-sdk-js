@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.130.1-alpha.b0723048ea03fd17a2e88857f1c5f4e756ded3ce](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.130.0...v1.130.1-alpha.b0723048ea03fd17a2e88857f1c5f4e756ded3ce) (2021-05-24)
+
+
+### Features
+
+* **payment:** PAYPAL-863 migrated from checkout.js to Paypal JS SDK ([74a4f0a](https://github.com/bigcommerce/checkout-sdk-js/commit/74a4f0a32928086d271953f7c6555e99773ee890))
+* **payment:** PAYPAL-863 migrated from checkout.js to Paypal JS SDK ([685585f](https://github.com/bigcommerce/checkout-sdk-js/commit/685585f3d1eb2a48c344ef4c8f803764f7b85587))
+* **payment:** PAYPAL-863 migrated from checkout.js version of Braintree to JSSDK ([b072304](https://github.com/bigcommerce/checkout-sdk-js/commit/b0723048ea03fd17a2e88857f1c5f4e756ded3ce))
+* **payment:** PAYPAL-863 PayPal JS SDK Pay-in-4 Banners and Smart Buttons ([5d54d39](https://github.com/bigcommerce/checkout-sdk-js/commit/5d54d39978efae470a89dd3b303ccefca99aa36e))
+
+
+### Bug Fixes
+
+* **common:** CHECKOUT-5612 Add isAccountCreationEnabled prop to StoreConfig ([74cc00e](https://github.com/bigcommerce/checkout-sdk-js/commit/74cc00e301185aed9acf7b0f42141f0dea035a20))
+
 ## [1.130.0](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.129.1...v1.130.0) (2021-02-15)
 
 
