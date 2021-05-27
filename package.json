@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/checkout-sdk",
-  "version": "1.151.0",
+  "version": "1.151.1-alpha.e7b504ce2f48c0ef8bd6c602dff9ec1193909238",
   "description": "BigCommerce Checkout JavaScript SDK",
   "license": "MIT",
   "main": "dist/checkout-sdk.js",
