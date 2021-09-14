@@ -517,7 +517,9 @@ export default function createPaymentStrategyRegistry(
                         new BraintreeScriptLoader(scriptLoader)
                     )
                 )
-            )
+            ),
+            undefined,
+            new BraintreeSDKCreator(new BraintreeScriptLoader(scriptLoader))
         )
     );
 

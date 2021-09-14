@@ -11,6 +11,7 @@ import { getCustomerState } from '../../../customer/customers.mock';
 import { FormFieldsActionCreator, FormFieldsRequestSender } from '../../../form';
 import { OrderActionCreator } from '../../../order';
 import { OrderFinalizationNotRequiredError } from '../../../order/errors';
+import { getOrder } from '../../../order/orders.mock';
 import { createPaymentClient, createPaymentStrategyRegistry, PaymentActionCreator, PaymentInitializeOptions, PaymentMethod, PaymentMethodActionCreator, PaymentMethodRequestSender, PaymentRequestSender, PaymentStrategyActionCreator } from '../../../payment';
 import { createSpamProtection, PaymentHumanVerificationHandler, SpamProtectionActionCreator, SpamProtectionRequestSender } from '../../../spam-protection';
 import { getGooglePay, getPaymentMethodsState } from '../../payment-methods.mock';
@@ -213,10 +214,13 @@ describe('GooglePayPaymentStrategy', () => {
 
     describe('#execute', () => {
         let googlePayOptions: PaymentInitializeOptions;
+        const order = getOrder();
 
         beforeEach(() => {
             jest.spyOn(walletButton, 'addEventListener');
             jest.spyOn(store, 'dispatch').mockReturnValue(Promise.resolve()).mockReturnValue(store.getState());
+            jest.spyOn(store.getState().order, 'getOrderOrThrow').mockReturnValue(order);
+            jest.spyOn(strategy, 'verifyCard').mockReturnValue(Promise.resolve());
             googlePayOptions = {
                 methodId: 'googlepaybraintree',
                 googlepaybraintree: {
