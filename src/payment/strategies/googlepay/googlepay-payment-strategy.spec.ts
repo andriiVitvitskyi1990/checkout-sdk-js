@@ -11,6 +11,7 @@ import { getCustomerState } from '../../../customer/customers.mock';
 import { FormFieldsActionCreator, FormFieldsRequestSender } from '../../../form';
 import { OrderActionCreator } from '../../../order';
 import { OrderFinalizationNotRequiredError } from '../../../order/errors';
+import { getOrder } from '../../../order/orders.mock';
 import { createPaymentClient, createPaymentStrategyRegistry, PaymentActionCreator, PaymentInitializeOptions, PaymentMethod, PaymentMethodActionCreator, PaymentMethodRequestSender, PaymentRequestSender, PaymentStrategyActionCreator } from '../../../payment';
 import { createSpamProtection, PaymentHumanVerificationHandler, SpamProtectionActionCreator, SpamProtectionRequestSender } from '../../../spam-protection';
 import { getGooglePay, getPaymentMethodsState } from '../../payment-methods.mock';
@@ -112,6 +113,7 @@ describe('GooglePayPaymentStrategy', () => {
             initializationData: {
                 nonce: '',
                 card_information: 'card_info',
+                isThreeDSecureEnabled: true,
             },
         };
 
@@ -123,6 +125,7 @@ describe('GooglePayPaymentStrategy', () => {
         jest.spyOn(googlePayPaymentProcessor, 'initialize').mockReturnValue(Promise.resolve());
         jest.spyOn(googlePayAdyenV2PaymentProcessor, 'initialize').mockReturnValue(Promise.resolve());
         jest.spyOn(googlePayAdyenV2PaymentProcessor, 'processAdditionalAction').mockReturnValue(Promise.resolve());
+        jest.spyOn(strategy, 'verifyCard').mockReturnValue(Promise.resolve());
 
         paymentMethodMock = { ...getGooglePay() };
     });
@@ -213,10 +216,12 @@ describe('GooglePayPaymentStrategy', () => {
 
     describe('#execute', () => {
         let googlePayOptions: PaymentInitializeOptions;
+        const order = getOrder();
 
         beforeEach(() => {
             jest.spyOn(walletButton, 'addEventListener');
             jest.spyOn(store, 'dispatch').mockReturnValue(Promise.resolve()).mockReturnValue(store.getState());
+            jest.spyOn(store.getState().order, 'getOrderOrThrow').mockReturnValue(order);
             googlePayOptions = {
                 methodId: 'googlepaybraintree',
                 googlepaybraintree: {
@@ -227,6 +232,40 @@ describe('GooglePayPaymentStrategy', () => {
             };
         });
 
+        it('calls verifyCard when 3ds is enabled',  async () => {
+            jest.spyOn(store.getState().paymentMethods, 'getPaymentMethodOrThrow').mockReturnValue({
+                initializationData: {
+                    nonce: 'nonce',
+                    card_information: {
+                        type: 'type',
+                        number: 'number',
+                    },
+                    isThreeDSecureEnabled: true,
+                },
+            });
+
+            await strategy.initialize(googlePayOptions);
+            await strategy.execute(getGoogleOrderRequestBody());
+            expect(strategy.verifyCard).toBeCalled();
+        });
+
+        it('should not call verifyCard when 3ds is disabled',  async () => {
+            jest.spyOn(store.getState().paymentMethods, 'getPaymentMethodOrThrow').mockReturnValue({
+                initializationData: {
+                    nonce: 'nonce',
+                    card_information: {
+                        type: 'type',
+                        number: 'number',
+                    },
+                    isThreeDSecureEnabled: false,
+                },
+            });
+
+            await strategy.initialize(googlePayOptions);
+            await strategy.execute(getGoogleOrderRequestBody());
+            expect(strategy.verifyCard).not.toBeCalled();
+        });
+
         it('creates the order and submit payment', async () => {
             jest.spyOn(store.getState().paymentMethods, 'getPaymentMethodOrThrow').mockReturnValue({
                 initializationData: {
@@ -235,6 +274,7 @@ describe('GooglePayPaymentStrategy', () => {
                         type: 'type',
                         number: 'number',
                     },
+                    isThreeDSecureEnabled: true,
                 },
             });
             await strategy.initialize(googlePayOptions);
@@ -268,6 +308,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'nonce',
                     card_information: undefined,
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -288,6 +329,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'nonce',
                     card_information: undefined,
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -307,6 +349,7 @@ describe('GooglePayPaymentStrategy', () => {
                         type: 'type',
                         number: 'number',
                     },
+                    isThreeDSecureEnabled: true,
                 },
             }).mockReturnValue({
                 initializationData: {
@@ -315,13 +358,14 @@ describe('GooglePayPaymentStrategy', () => {
                         type: 'type',
                         number: 'number',
                     },
+                    isThreeDSecureEnabled: true,
                 },
             });
 
             await strategy.initialize(googlePayOptions);
             await strategy.execute(getGoogleOrderRequestBody());
 
-            expect(store.getState().paymentMethods.getPaymentMethodOrThrow).toHaveBeenCalledTimes(3);
+            expect(store.getState().paymentMethods.getPaymentMethodOrThrow).toHaveBeenCalledTimes(4);
             expect(googlePayPaymentProcessor.displayWallet).toBeCalled();
         });
 
@@ -334,6 +378,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'nonce',
                     card_information: undefined,
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -352,6 +397,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: undefined,
                     card_information: undefined,
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -381,6 +427,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'token',
                     card_information: 'ci',
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -422,6 +469,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'token',
                     card_information: 'ci',
+                    isThreeDSecureEnabled: true,
                 },
             });
 
@@ -462,6 +510,7 @@ describe('GooglePayPaymentStrategy', () => {
                 initializationData: {
                     nonce: 'token',
                     card_information: 'ci',
+                    isThreeDSecureEnabled: true,
                 },
             });
 
