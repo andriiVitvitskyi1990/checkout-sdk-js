@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.182.1-alpha.27596569124d964c6273b89b1b7902b6f3ed490f](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.180.0...v1.182.1-alpha.27596569124d964c6273b89b1b7902b6f3ed490f) (2021-09-15)
+
+
+### Features
+
+* **payment:** BOLT-24 added account creation flag for Bolt Embedded One Click execution ([b23ae4a](https://github.com/bigcommerce/checkout-sdk-js/commit/b23ae4a4e126be2058a70317e5dc40600a7725ce))
+* **payment:** PAYPAL-954 Update Braintree web SDK version ([#1231](https://github.com/bigcommerce/checkout-sdk-js/issues/1231)) ([041828d](https://github.com/bigcommerce/checkout-sdk-js/commit/041828dd147023ea7665bc4e843c4fb9ff55e30e))
+* **payment:** PAYPAL-972 added threeDS check for googlepay braintree ([2759656](https://github.com/bigcommerce/checkout-sdk-js/commit/27596569124d964c6273b89b1b7902b6f3ed490f))
+
+
+### Bug Fixes
+
+* **payment:** INT-4705 [Clearpay] display correct error message when amount is out of limits ([3b5ba0b](https://github.com/bigcommerce/checkout-sdk-js/commit/3b5ba0bcd17cbf9f28f148e414a49b5a0e086c68))
+* **payment:** INT-4810 Forget checkout provider and reload payment methods - Clearpay ([#1234](https://github.com/bigcommerce/checkout-sdk-js/issues/1234)) ([d8e982e](https://github.com/bigcommerce/checkout-sdk-js/commit/d8e982e005183822b0e11148f0393f7a9d3eb144))
+* **payment:** PAYMENTS-7252 pass methodIds on to PPSDK endpoint without transformation ([#1233](https://github.com/bigcommerce/checkout-sdk-js/issues/1233)) ([c0b0d3a](https://github.com/bigcommerce/checkout-sdk-js/commit/c0b0d3ac877264e4d2a98890a849b3026b21e877))
+
 ## [1.182.0](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.181.1...v1.182.0) (2021-09-14)
 
 
