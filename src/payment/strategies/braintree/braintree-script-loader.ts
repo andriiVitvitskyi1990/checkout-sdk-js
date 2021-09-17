@@ -75,6 +75,17 @@ export default class BraintreeScriptLoader {
             });
     }
 
+    loadVenmoCheckout() {
+        return this._scriptLoader
+            .loadScript(`//js.braintreegateway.com/web/${version}/js/venmo.min.js`)
+            .then(() => {
+                if (!this._window.braintree || !this._window.braintree.venmo) {
+                    throw new PaymentMethodClientUnavailableError();
+                }
+
+                return this._window.braintree.venmo;
+            });
+    }
     loadVisaCheckout(): Promise<BraintreeVisaCheckoutCreator> {
         return this._scriptLoader
             .loadScript(`//js.braintreegateway.com/web/${version}/js/visa-checkout.min.js`)

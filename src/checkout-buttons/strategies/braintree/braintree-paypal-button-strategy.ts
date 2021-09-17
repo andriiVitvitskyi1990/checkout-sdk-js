@@ -20,7 +20,9 @@ import { BraintreePaypalButtonInitializeOptions } from './braintree-paypal-butto
 
 export default class BraintreePaypalButtonStrategy implements CheckoutButtonStrategy {
     private _paypalCheckout?: BraintreePaypalCheckout;
+    private _venmoCheckout?: any;
     private _paymentMethod?: PaymentMethod;
+    private _venmoInstance?: any;
 
     constructor(
         private _store: CheckoutStore,
@@ -45,26 +47,32 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
 
         this._braintreeSDKCreator.initialize(paymentMethod.clientToken);
         const container = `#${options.containerId}`;
+        const venmoParentContainer = options.containerId;
 
         this._renderButtonsData = {
             paymentMethod,
             paypalOptions,
             container,
+            venmoParentContainer,
         };
 
         return Promise.all([
             this._braintreeSDKCreator.getPaypalCheckout({currency: currency?.code }, (paypalCheckoutInstance: PaypalClientInstance) => this.renderButtons(paypalCheckoutInstance)),
+            this._braintreeSDKCreator.getVenmoCheckout((venmoCheckoutInstance: any) => this.getVenmoInstance(venmoCheckoutInstance)),
             this._braintreeSDKCreator.getPaypal(),
         ])
-            .then(([paypalCheckout]) => {
+            .then(([paypalCheckout, venmoCheckout]) => {
                 if (!this._paypalCheckout) {
                     this._paypalCheckout = paypalCheckout;
+                }
+                if (!this._venmoCheckout) {
+                    this._venmoCheckout = venmoCheckout;
                 }
             });
     }
 
     renderButtons(paypalCheckoutInstance: PaypalClientInstance) {
-        const { paypalOptions, paymentMethod, container } = this._renderButtonsData as RenderButtonsData;
+        const { paypalOptions, paymentMethod, container, venmoParentContainer } = this._renderButtonsData as RenderButtonsData;
         const { paypal } = this._window;
         let updatedPaypalOptions: BraintreePaypalButtonInitializeOptions;
 
@@ -102,7 +110,63 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
                     button.render(container);
                 }
             });
+            this.renderVenmoButton(venmoParentContainer);
         }
+    }
+
+    getVenmoInstance(venmoInstance: any) {
+        this._venmoInstance = venmoInstance;
+    }
+
+    renderVenmoButton( container: any) {
+        const venmoButton = document.createElement('div');
+        const buttonsContainer = document.getElementById(container);
+        buttonsContainer?.appendChild(venmoButton);
+        venmoButton.setAttribute('id', 'venmo-button');
+        this._displayVenmoButton(this._venmoInstance);
+    }
+
+     _displayVenmoButton(venmoInstance: any) {
+        const venmoButton = document.getElementById('venmo-button');
+        // Assumes that venmoButton is initially display: none.
+        if (venmoButton) {
+             venmoButton.style.display = 'block';
+             venmoButton.style.height = '90px';
+             venmoButton.style.width = '150px';
+             venmoButton.style.backgroundColor = 'red';
+
+             venmoButton.addEventListener('click', () => {
+                  venmoButton.setAttribute('disabled', 'true');
+
+                  venmoInstance.tokenize((tokenizeErr: any, payload: any) => {
+                     venmoButton.removeAttribute('disabled');
+                     if (tokenizeErr) {
+                         this._handleVenmoError(tokenizeErr);
+                     } else {
+                         this._handleVenmoSuccess(payload);
+                     }
+                 });
+             });
+         }
+    }
+
+       _handleVenmoError(err: any) {
+        if (err.code === 'VENMO_CANCELED') {
+
+        } else if (err.code === 'VENMO_APP_CANCELED') {
+
+        } else {
+
+        }
+    }
+
+       _handleVenmoSuccess(payload: any) {
+        console.log('SUCCESS');
+        // Send the payment method nonce to your server, e.g. by injecting
+        // it into your form as a hidden input.
+        console.log('Got a payment method nonce:', payload.nonce);
+        // Display the Venmo username in your checkout UI.
+        console.log('Venmo user:', payload.details.username);
     }
 
     deinitialize(): Promise<void> {

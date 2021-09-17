@@ -6,6 +6,7 @@ import { PaypalAuthorizeData, PaypalButtonOptions, PaypalButtonRender, PaypalSDK
 import { VisaCheckoutInitOptions, VisaCheckoutPaymentSuccessPayload, VisaCheckoutTokenizedPayload } from './visacheckout';
 
 export interface BraintreeSDK {
+    venmo?: any;
     client?: BraintreeClientCreator;
     dataCollector?: BraintreeDataCollectorCreator;
     hostedFields?: BraintreeHostedFieldsCreator;
@@ -358,6 +359,7 @@ export interface RenderButtonsData {
     paymentMethod: PaymentMethod;
     paypalOptions: BraintreePaypalButtonInitializeOptions;
     container: string;
+    venmoParentContainer: string;
 }
 
 export type RenderButtons = (instance: PaypalClientInstance) => void;

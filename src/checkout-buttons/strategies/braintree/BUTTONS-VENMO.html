@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BUTTONS</title>
+    <!-- Load the Braintree components -->
+    <script src="https://js.braintreegateway.com/web/3.81.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.81.0/js/paypal-checkout.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.81.0/js/venmo.min.js"></script>
+    <script>
+        const FUNDING = [
+            "applepay",
+            "bancontact",
+            "blik",
+            "boleto",
+            "card",
+            "credit",
+            "eps",
+            "giropay",
+            "ideal",
+            "itau",
+            "maxima",
+            "mercadopago",
+            "mybank",
+            "oxxo",
+            "p24",
+            "paylater",
+            "paypal",
+            "payu",
+            "sepa",
+            "sofort",
+            "trustly",
+            "venmo",
+            "verkkopankki",
+            "wechatpay",
+            "zimpler",
+        ];
+        braintree.client.create({
+            authorization: "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJleUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpGVXpJMU5pSXNJbXRwWkNJNklqSXdNVGd3TkRJMk1UWXRjMkZ1WkdKdmVDSXNJbWx6Y3lJNkltaDBkSEJ6T2k4dllYQnBMbk5oYm1SaWIzZ3VZbkpoYVc1MGNtVmxaMkYwWlhkaGVTNWpiMjBpZlEuZXlKbGVIQWlPakUyTXpFM056WTNPVFVzSW1wMGFTSTZJakl6WTJWbFpEaGlMV1UyWldJdE5EY3paQzA0WlRoaExXTmpOVE15TUROaVl6VmpNeUlzSW5OMVlpSTZJbmhvT1RZME5IbzRhM0o0TkRad2FtUWlMQ0pwYzNNaU9pSm9kSFJ3Y3pvdkwyRndhUzV6WVc1a1ltOTRMbUp5WVdsdWRISmxaV2RoZEdWM1lYa3VZMjl0SWl3aWJXVnlZMmhoYm5RaU9uc2ljSFZpYkdsalgybGtJam9pZUdnNU5qUTBlamhyY25nME5uQnFaQ0lzSW5abGNtbG1lVjlqWVhKa1gySjVYMlJsWm1GMWJIUWlPbVpoYkhObGZTd2ljbWxuYUhSeklqcGJJbTFoYm1GblpWOTJZWFZzZENKZExDSnpZMjl3WlNJNld5SkNjbUZwYm5SeVpXVTZWbUYxYkhRaVhTd2liM0IwYVc5dWN5STZleUp0WlhKamFHRnVkRjloWTJOdmRXNTBYMmxrSWpvaWRHVnpkQ0o5ZlEuRldQVEstbFVrMkVDdUZYeUg5d2QyYkR0Q3FPVk5uYUtQZDBUWXFsOU1meXFTck5sMnVQdUthWjRnSFJ5SVFGT2JyVjdqTWNfdEVfTUNhZzVCLVF1VVEiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMveGg5NjQ0ejhrcng0NnBqZC9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJtZXJjaGFudEFjY291bnRJZCI6InRlc3QiLCJncmFwaFFMIjp7InVybCI6Imh0dHBzOi8vcGF5bWVudHMuc2FuZGJveC5icmFpbnRyZWUtYXBpLmNvbS9ncmFwaHFsIiwiZGF0ZSI6IjIwMTgtMDUtMDgiLCJmZWF0dXJlcyI6WyJ0b2tlbml6ZV9jcmVkaXRfY2FyZHMiXX0sImNsaWVudEFwaVVybCI6Imh0dHBzOi8vYXBpLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy94aDk2NDR6OGtyeDQ2cGpkL2NsaWVudF9hcGkiLCJlbnZpcm9ubWVudCI6InNhbmRib3giLCJtZXJjaGFudElkIjoieGg5NjQ0ejhrcng0NnBqZCIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwidmVubW8iOiJvZmYiLCJjaGFsbGVuZ2VzIjpbXSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vb3JpZ2luLWFuYWx5dGljcy1zYW5kLnNhbmRib3guYnJhaW50cmVlLWFwaS5jb20veGg5NjQ0ejhrcng0NnBqZCJ9LCJwYXlwYWxFbmFibGVkIjp0cnVlLCJwYXlwYWwiOnsiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJlbnZpcm9ubWVudE5vTmV0d29yayI6ZmFsc2UsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJhbGxvd0h0dHAiOnRydWUsImRpc3BsYXlOYW1lIjoidGVzdCIsImNsaWVudElkIjoiQWJ4NUFVYWtIaDRvOEVJRlVBTDRseS1WZk9MMXRDako3ZjVuc2UwTUlQRkJUbmYxQ0ZIWVdXOGxEVEEwQXlOMmV6MjVhemJ3eXp0QkpDbnkiLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJicmFpbnRyZWVDbGllbnRJZCI6Im1hc3RlcmNsaWVudDMiLCJtZXJjaGFudEFjY291bnRJZCI6InRlc3QiLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifX0="
+        }, function (clientErr, clientInstance) {
+            braintree.venmo.create({
+                client: clientInstance,
+                allowDesktop: true,
+                paymentMethodUsage: 'multi_use' // available in v3.77.0+
+                // Add allowNewBrowserTab: false if your checkout page does not support
+                // relaunching in a new tab when returning from the Venmo app. This can
+                // be omitted otherwise.
+                // allowNewBrowserTab: false
+            }, function (venmoErr, venmoInstance) {
+                if (venmoErr) {
+                    console.error('Error creating Venmo:', venmoErr);
+                    return;
+                }
+
+                // Verify browser support before proceeding.
+                if (!venmoInstance.isBrowserSupported()) {
+                    console.log('Browser does not support Venmo');
+                    return;
+                }
+                console.log(venmoInstance);
+                displayVenmoButton(venmoInstance);
+            });
+
+            braintree.paypalCheckout.create({
+                client: clientInstance
+            }, function (paypalCheckoutErr, paypalCheckoutInstance) {
+                paypalCheckoutInstance.loadPayPalSDK({
+                    currency: 'USD',
+                }, function () {
+                    FUNDING.forEach(source => {
+                        const button =  paypal.Buttons({
+                            createOrder: function () {},
+                            onApprove: function (data) {},
+                            fundingSource: source,
+                        });
+                        if (button.isEligible()) {
+                            button.render('#paypal-button')
+                        }
+                    });
+                });
+            });
+        });
+
+        function displayVenmoButton(venmoInstance) {
+            console.log('DISPLAY VENMO');
+            const venmoButton = document.getElementById('venmo-button');
+            // Assumes that venmoButton is initially display: none.
+            venmoButton.style.display = 'block';
+            venmoButton.style.height = '90px';
+            venmoButton.style.width = '150px';
+            venmoButton.style.backgroundColor = 'red';
+
+            venmoButton.addEventListener('click', function () {
+                venmoButton.disabled = true;
+
+                venmoInstance.tokenize(function (tokenizeErr, payload) {
+                    venmoButton.removeAttribute('disabled');
+                    console.log('TOKENIZE');
+                    if (tokenizeErr) {
+                        handleVenmoError(tokenizeErr);
+                    } else {
+                        handleVenmoSuccess(payload);
+                    }
+                });
+            });
+        }
+
+        function handleVenmoError(err) {
+            if (err.code === 'VENMO_CANCELED') {
+                console.log('App is not available or user aborted payment flow');
+            } else if (err.code === 'VENMO_APP_CANCELED') {
+                console.log('User canceled payment flow');
+            } else {
+                console.error('An error occurred:', err.message);
+            }
+        }
+
+        function handleVenmoSuccess(payload) {
+            console.log('SUCCESS');
+            // Send the payment method nonce to your server, e.g. by injecting
+            // it into your form as a hidden input.
+            console.log('Got a payment method nonce:', payload.nonce);
+            // Display the Venmo username in your checkout UI.
+            console.log('Venmo user:', payload.details.username);
+        }
+    </script>
+</head>
+<body>
+<div id="paypal-button"></div>
+<div id="venmo-button"></div>
+</body>
+</html>

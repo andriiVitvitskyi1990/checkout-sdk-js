@@ -27,6 +27,8 @@ export default class BraintreeSDKCreator {
     } = {};
     private _googlePay?: Promise<GooglePayBraintreeSDK>;
     private _paypalcheckoutInstance?: PaypalClientInstance;
+    private _venmoCheckoutInstance?: any;
+    private _venmoCheckout?: any;
 
     constructor(
         private _braintreeScriptLoader: BraintreeScriptLoader
@@ -80,6 +82,36 @@ export default class BraintreeSDKCreator {
         }
 
         return this._paypalCheckout;
+    }
+
+    getVenmoCheckout(getVenmoInstance: RenderButtons) {
+        if (!this._venmoCheckout) {
+            this._venmoCheckout = Promise.all([
+                this.getClient(),
+                this._braintreeScriptLoader.loadVenmoCheckout(),
+            ])
+                .then(([client, venmoCheckout]) => venmoCheckout.create({
+                    client, allowDesktop: true,
+                    paymentMethodUsage: 'multi_use',
+                },
+                    (venmoErr: string, venmoInstance: any) =>  {
+                    this._venmoCheckoutInstance = venmoInstance;
+                    getVenmoInstance(venmoInstance);
+                    if (venmoErr) {
+
+                        return;
+                        }
+
+                    if (!venmoInstance.isBrowserSupported()) {
+
+                        return;
+                        }
+                }));
+        } else if (this._venmoCheckoutInstance) {
+            getVenmoInstance(this._venmoCheckoutInstance);
+        }
+
+        return this._venmoCheckoutInstance;
     }
 
     get3DS(): Promise<BraintreeThreeDSecure> {
