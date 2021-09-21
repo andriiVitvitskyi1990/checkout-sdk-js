@@ -358,6 +358,7 @@ export interface RenderButtonsData {
     paymentMethod: PaymentMethod;
     paypalOptions: BraintreePaypalButtonInitializeOptions;
     container: string;
+    messagingContainer?: string;
 }
 
 export type RenderButtons = (instance: PaypalClientInstance) => void;
@@ -369,5 +370,6 @@ export interface PaypalClientInstance {
 }
 
 export interface Config {
-    currency?: string ;
+    currency?: string;
+    components?: string;
 }
