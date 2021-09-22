@@ -11,6 +11,7 @@
 ### Properties
 
 * [allowCredit](braintreepaypalbuttoninitializeoptions.md#optional-allowcredit)
+* [messagingContainer](braintreepaypalbuttoninitializeoptions.md#optional-messagingcontainer)
 * [shippingAddress](braintreepaypalbuttoninitializeoptions.md#optional-shippingaddress)
 * [style](braintreepaypalbuttoninitializeoptions.md#optional-style)
 
@@ -26,6 +27,14 @@
 • **allowCredit**? : *undefined | false | true*
 
 Whether or not to show a credit button.
+
+___
+
+### `Optional` messagingContainer
+
+• **messagingContainer**? : *undefined | string*
+
+The ID of a container which the messaging should be inserted.
 
 ___
 
