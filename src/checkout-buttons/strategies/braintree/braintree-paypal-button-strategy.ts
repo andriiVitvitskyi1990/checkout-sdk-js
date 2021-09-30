@@ -160,13 +160,13 @@ export default class BraintreePaypalButtonStrategy implements CheckoutButtonStra
         }
     }
 
-       _handleVenmoSuccess(payload: any) {
-        console.log('SUCCESS');
+       _handleVenmoSuccess(_payload: any) {
+        // console.log('SUCCESS');
         // Send the payment method nonce to your server, e.g. by injecting
         // it into your form as a hidden input.
-        console.log('Got a payment method nonce:', payload.nonce);
+        // console.log('Got a payment method nonce:', payload.nonce);
         // Display the Venmo username in your checkout UI.
-        console.log('Venmo user:', payload.details.username);
+        // console.log('Venmo user:', payload.details.username);
     }
 
     deinitialize(): Promise<void> {
