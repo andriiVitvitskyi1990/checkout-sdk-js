@@ -343,6 +343,22 @@ export interface BraintreeHostedFormError extends BraintreeError {
     };
 }
 
+export interface VenmoError {
+    code: string;
+    details: string;
+    message: string;
+    type: string;
+    name: string;
+}
+
+export interface VenmoInstance extends PaypalClientInstance {
+    _allowDesktop?: boolean;
+    _paymentMethodUsage?: boolean;
+    tokenize?(callback: Tokenize): void;
+}
+
+type Tokenize = (tokenizeError: VenmoError) => void;
+
 interface BraintreeThreeDSecureVerificationData {
     lookup: {
         threeDSecureVersion: string;
