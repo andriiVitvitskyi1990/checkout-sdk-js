@@ -250,10 +250,11 @@ export default class PaypalCommercePaymentProcessor {
     };
 
     private _processNotEligible(buttonParams: ButtonsOptions, fundingKey?: keyof PaypalCommerceSDKFunding): void {
-        if (fundingKey === this._paypal?.FUNDING.PAYLATER) {
+        if (fundingKey?.toUpperCase() === this._paypal?.FUNDING.PAYLATER.toUpperCase()) {
             buttonParams.fundingSource = this._paypal?.FUNDING.CREDIT;
 
             this._paypalButtons = this._paypal?.Buttons(buttonParams);
+            console.log('PAYPAL BUTTONS', this._paypalButtons, this._paypalButtons?.isEligible());
 
             if (this._paypalButtons?.isEligible()) {
                 return;
