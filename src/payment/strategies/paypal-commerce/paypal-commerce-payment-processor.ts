@@ -254,6 +254,8 @@ export default class PaypalCommercePaymentProcessor {
             buttonParams.fundingSource = this._paypal?.FUNDING.PAYLATER;
 
             this._paypalButtons = this._paypal?.Buttons(buttonParams);
+            // eslint-disable-next-line @typescript-eslint/tslint/config
+            console.log('PPC', this._paypalButtons, this._paypalButtons?.isEligible());
 
             if (this._paypalButtons?.isEligible()) {
                 return;
