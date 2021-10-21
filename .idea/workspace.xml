@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="70c0717c-e025-4f70-8417-5a3e10c4e061" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1yURJEuOKSUZeRJKjWDdg21whYD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../checkout-js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70c0717c-e025-4f70-8417-5a3e10c4e061" name="Default Changelist" comment="" />
+      <created>1632304106355</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632304106355</updated>
+      <workItem from="1632304107526" duration="1111000" />
+      <workItem from="1632322951345" duration="22920000" />
+      <workItem from="1632732411750" duration="1701000" />
+      <workItem from="1632739299168" duration="1110000" />
+      <workItem from="1632810728003" duration="990000" />
+      <workItem from="1632816729408" duration="358000" />
+      <workItem from="1632818297963" duration="1238000" />
+      <workItem from="1632839681321" duration="613000" />
+      <workItem from="1632905887931" duration="531000" />
+      <workItem from="1632909240911" duration="435000" />
+      <workItem from="1632910709639" duration="564000" />
+      <workItem from="1632915555427" duration="220000" />
+      <workItem from="1632915913855" duration="810000" />
+      <workItem from="1632918823744" duration="793000" />
+      <workItem from="1632990715791" duration="1701000" />
+      <workItem from="1633011593433" duration="490000" />
+      <workItem from="1633356181846" duration="2941000" />
+      <workItem from="1633416891709" duration="5564000" />
+      <workItem from="1633426991532" duration="329000" />
+      <workItem from="1633427328861" duration="227000" />
+      <workItem from="1633427558161" duration="8354000" />
+      <workItem from="1633500292376" duration="2260000" />
+      <workItem from="1633615965880" duration="2721000" />
+      <workItem from="1633690341699" duration="492000" />
+      <workItem from="1634018534003" duration="872000" />
+      <workItem from="1634022376845" duration="721000" />
+      <workItem from="1634029176415" duration="443000" />
+      <workItem from="1634108933033" duration="601000" />
+      <workItem from="1634115532457" duration="2301000" />
+      <workItem from="1634124646392" duration="272000" />
+      <workItem from="1634125997662" duration="4638000" />
+      <workItem from="1634727884400" duration="1569000" />
+      <workItem from="1634736561756" duration="758000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/payment/strategies/moneris/moneris-payment-strategy.spec.ts</url>
+          <line>510</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
