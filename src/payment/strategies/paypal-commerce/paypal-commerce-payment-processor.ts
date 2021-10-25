@@ -251,7 +251,7 @@ export default class PaypalCommercePaymentProcessor {
 
     private _processNotEligible(buttonParams: ButtonsOptions, fundingKey?: keyof PaypalCommerceSDKFunding): void {
         if (fundingKey?.toUpperCase() === this._paypal?.FUNDING.PAYLATER.toUpperCase()) {
-            buttonParams.fundingSource = this._paypal?.FUNDING.PAYLATER;
+            buttonParams.fundingSource = this._paypal?.FUNDING.CREDIT;
 
             this._paypalButtons = this._paypal?.Buttons(buttonParams);
             // eslint-disable-next-line @typescript-eslint/tslint/config
