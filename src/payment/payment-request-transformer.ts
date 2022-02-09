@@ -115,6 +115,13 @@ export default class PaymentRequestTransformer {
             return { ...paymentMethod, id: paymentMethod.initializationData.gateway };
         }
 
+        if (paymentMethod.id === 'braintreevenmo') {
+            return {
+                ...paymentMethod,
+                id: 'braintreepaypal',
+            };
+        }
+
         return paymentMethod;
     }
 
