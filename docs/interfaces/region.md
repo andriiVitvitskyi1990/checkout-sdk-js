@@ -11,6 +11,7 @@
 ### Properties
 
 * [code](region.md#code)
+* [id](region.md#optional-id)
 * [name](region.md#name)
 
 ## Properties
@@ -18,6 +19,12 @@
 ###  code
 
 • **code**: *string*
+
+___
+
+### `Optional` id
+
+• **id**? : *undefined | number*
 
 ___
 
