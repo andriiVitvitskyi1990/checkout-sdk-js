@@ -5776,6 +5776,7 @@ declare interface Promotion {
 declare interface Region {
     code: string;
     name: string;
+    id?: number;
 }
 
 /**
