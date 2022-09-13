@@ -289,21 +289,21 @@ describe('PaypalCommercePaymentStrategy', () => {
             expect(submitForm).toHaveBeenCalled();
         });
 
-        it('calls onValidate onclick', async () => {
-            await paypalCommercePaymentStrategy.initialize(options);
+        // it('calls onValidate onclick', async () => {
+        //     await paypalCommercePaymentStrategy.initialize(options);
+        //
+        //     eventEmitter.emit('onClick');
+        //
+        //     expect(paypalcommerceOptions.onValidate).toHaveBeenCalled();
+        // });
 
-            eventEmitter.emit('onClick');
-
-            expect(paypalcommerceOptions.onValidate).toHaveBeenCalled();
-        });
-
-        it('shows loader if validation is passed onclick', async () => {
-            await paypalCommercePaymentStrategy.initialize(options);
-
-            eventEmitter.emit('onClick');
-
-            expect(loader.show).toHaveBeenCalled();
-        });
+        // it('shows loader if validation is passed onclick', async () => {
+        //     await paypalCommercePaymentStrategy.initialize(options);
+        //
+        //     eventEmitter.emit('onClick');
+        //
+        //     expect(loader.show).toHaveBeenCalled();
+        // });
 
         it('throws error if paypalcommerce is undefined', async () => {
             const expectedError = new InvalidArgumentError('Unable to initialize payment because "options.paypalcommerce" argument is not provided.');

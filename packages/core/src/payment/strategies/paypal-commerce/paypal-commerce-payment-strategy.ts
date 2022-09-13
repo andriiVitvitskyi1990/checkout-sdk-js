@@ -76,6 +76,7 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
             },
             onClick: async (_, actions) => {
                 if (cond) {
+                    console.log('ssxs');
                     submitForm();
                 } else {
                 this._initializePollingMechanism(submitForm, gatewayId, methodId, paypalcommerce);
