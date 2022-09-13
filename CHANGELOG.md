@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.284.1-alpha.17316b00061f927453678ef195a6e3dd7da57953](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.284.1-alpha.3bb9d8160bf630bef6c103f9cfdaa691d71685f3...v1.284.1-alpha.17316b00061f927453678ef195a6e3dd7da57953) (2022-09-13)
+
+
+### Features
+
+* **payment:** test ([17316b0](https://github.com/bigcommerce/checkout-sdk-js/commit/17316b00061f927453678ef195a6e3dd7da57953))
+
 ### [1.284.1-alpha.3bb9d8160bf630bef6c103f9cfdaa691d71685f3](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.180.0...v1.284.1-alpha.3bb9d8160bf630bef6c103f9cfdaa691d71685f3) (2022-09-12)
 
 
