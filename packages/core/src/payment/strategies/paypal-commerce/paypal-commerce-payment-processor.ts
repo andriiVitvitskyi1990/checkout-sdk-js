@@ -70,20 +70,15 @@ export default class PaypalCommercePaymentProcessor {
         }
 
         const { paramsForProvider, fundingKey, onRenderButton } = optionalParams;
-        const cond = true;
 
         const buttonParams: ButtonsOptions = {
             ...params,
             createOrder: () => this._setupPayment(cartId, paramsForProvider),
-
-        ...(cond ? {
             onClick: async (data, actions) => {
                 this._fundingSource = data.fundingSource;
 
                 return params.onClick?.(data, actions);
                 }
-            } : () => console.log('sdsdsd')
-            ),
         };
 
         if (params.style) {
@@ -100,10 +95,13 @@ export default class PaypalCommercePaymentProcessor {
         if (!this._paypalButtons.isEligible()) {
             this._processNotEligible(buttonParams, fundingKey);
         }
-
-        onRenderButton?.();
-
-        this._paypalButtons.render(container);
+const cond = true;
+        if (cond) {
+            console.log('sdsdsd');
+        } else {
+            onRenderButton?.();
+            this._paypalButtons?.render(container);
+        }
 
         return this._paypalButtons;
     }
