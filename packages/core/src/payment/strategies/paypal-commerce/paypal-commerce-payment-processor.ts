@@ -77,7 +77,6 @@ export default class PaypalCommercePaymentProcessor {
 
             onClick: async (data, actions) => {
                 this._fundingSource = data.fundingSource;
-                await actions.reject();
 
                 return params.onClick?.(data, actions);
             },

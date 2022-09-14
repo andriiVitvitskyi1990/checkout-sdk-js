@@ -76,19 +76,20 @@ export default class PaypalCommercePaymentStrategy implements PaymentStrategy {
             },
             onClick: async (_, actions) => {
                 if (cond) {
-                    console.log('ssxs');
-                    submitForm();
+                     await actions.reject();
+                     submitForm();
                 } else {
-                this._initializePollingMechanism(submitForm, gatewayId, methodId, paypalcommerce);
+                    this._initializePollingMechanism(submitForm, gatewayId, methodId, paypalcommerce);
 
-                const onValidationPassed = () => {
-                    this._loadingIndicator?.show(loadingIndicatorContainerId);
+                    const onValidationPassed = () => {
+                        this._loadingIndicator?.show(loadingIndicatorContainerId);
 
-                    return actions.resolve();
-                };
+                        return actions.resolve();
+                    };
 
-                return onValidate(onValidationPassed, actions.reject);
-            }},
+                    return onValidate(onValidationPassed, actions.reject);
+                }
+            },
             onCancel: () => {
                 this._deinitializePollingTimer(gatewayId);
                 this._loadingIndicator?.hide();
