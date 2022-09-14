@@ -76,15 +76,14 @@ export default class PaypalCommercePaymentProcessor {
             ...params,
             createOrder: () => this._setupPayment(cartId, paramsForProvider),
 
+        ...(cond ? {
             onClick: async (data, actions) => {
-               if(cond) {
-                   await actions.reject();
-                   this._fundingSource = data.fundingSource;
-               } else {
+                this._fundingSource = data.fundingSource;
 
-                   return params.onClick?.(data, actions);
-               }
-            },
+                return params.onClick?.(data, actions);
+                }
+            } : () => console.log('sdsdsd')
+            ),
         };
 
         if (params.style) {
