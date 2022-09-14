@@ -68,22 +68,20 @@ export default class PaypalCommercePaymentProcessor {
         if (!this._paypal || !this._paypal.Buttons) {
             throw new PaymentMethodClientUnavailableError();
         }
-        const cond = true;
+
         const { paramsForProvider, fundingKey, onRenderButton } = optionalParams;
 
         const buttonParams: ButtonsOptions = {
             ...params,
             createOrder: () => this._setupPayment(cartId, paramsForProvider),
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            ...(!cond && {
-                onClick: async (data, actions) => {
-                    this._fundingSource = data.fundingSource;
 
-                    return params.onClick?.(data, actions);
-                },
-            })
-        }
+            onClick: async (data, actions) => {
+                this._fundingSource = data.fundingSource;
+                await actions.reject();
+
+                return params.onClick?.(data, actions);
+            },
+        };
 
         if (params.style) {
             buttonParams.style = this._validateStyleParams(params.style);
