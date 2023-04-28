@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.376.2-alpha.5b03e7a741f8110bd84ec081e36ebbf0ab8cc600](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.374.6...v1.376.2-alpha.5b03e7a741f8110bd84ec081e36ebbf0ab8cc600) (2023-04-28)
+
+
+### Features
+
+* **payment:** BOLT-458 Move Bolt customer strategy to new Bolt package ([f8508d9](https://github.com/bigcommerce/checkout-sdk-js/commit/f8508d9366714d1b1bc7078335f78d1b4254b0fe))
+* **payment:** INT-7557 BlueSnapDirect: Implement 3DS 2 ([#1925](https://github.com/bigcommerce/checkout-sdk-js/issues/1925)) ([6574134](https://github.com/bigcommerce/checkout-sdk-js/commit/6574134019c07124191633adf469859f987a521e))
+* **payment:** PAYPAL-2013 added enable-funding to properly display paylater button ([5b03e7a](https://github.com/bigcommerce/checkout-sdk-js/commit/5b03e7a741f8110bd84ec081e36ebbf0ab8cc600))
+* **payment:** PAYPAL-2013 added enable-funding to properly display paylater button ([b0c0a3c](https://github.com/bigcommerce/checkout-sdk-js/commit/b0c0a3c9660aa0ac9566433f0713232a5b65e76a))
+
+
+### Bug Fixes
+
+* **payment:** PAYPAL-2036 added shippingAddressEditable option to Braintree payment configuration ([#1962](https://github.com/bigcommerce/checkout-sdk-js/issues/1962)) ([98c189a](https://github.com/bigcommerce/checkout-sdk-js/commit/98c189a05d1802dd02a75e6751f92bda1a644d57))
+
+
+### Code Refactoring
+
+* **payment:** PAYPAL-1895 removed paypal commerce code from core package ([#1960](https://github.com/bigcommerce/checkout-sdk-js/issues/1960)) ([87cfdc4](https://github.com/bigcommerce/checkout-sdk-js/commit/87cfdc4754be9e52fdf06afc7257e3601c3cf664))
+* **payment:** PAYPAL-2365 added PayPalCommerceVenmo payment strategy to paypal-commerce-integration package ([#1955](https://github.com/bigcommerce/checkout-sdk-js/issues/1955)) ([abf339a](https://github.com/bigcommerce/checkout-sdk-js/commit/abf339a619b137a4e34e32f1e164bde9d05c48d1))
+
 ### [1.376.1](https://github.com/bigcommerce/checkout-sdk-js/compare/v1.376.0...v1.376.1) (2023-04-27)
 
 
