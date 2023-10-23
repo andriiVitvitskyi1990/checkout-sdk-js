@@ -192,7 +192,7 @@ export default class PaypalCommerceRatepayPaymentStrategy implements PaymentStra
         const formattedDate =
             date.getDate() < 10 ? `0${date.getDate()}` : date.getDate().toString();
         const formattedMonth =
-            date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth().toString();
+            date.getMonth() < 9 ? `0${date.getMonth() + 1}` : (date.getMonth() + 1).toString();
 
         return `${date.getFullYear()}-${formattedMonth}-${formattedDate}`;
     }
