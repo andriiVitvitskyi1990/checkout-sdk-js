@@ -202,6 +202,7 @@ export default class PayPalCommerceButtonStrategy implements CheckoutButtonStrat
     private async onShippingAddressChange(
         data: ShippingAddressChangeCallbackPayload,
     ): Promise<void> {
+        console.log('DATA', data);
         const address = this.paypalCommerceIntegrationService.getAddress({
             city: data.shippingAddress.city,
             countryCode: data.shippingAddress.country_code,
