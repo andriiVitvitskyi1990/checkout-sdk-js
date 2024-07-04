@@ -33,6 +33,8 @@ export default class PayPalCommerceButtonStrategy implements CheckoutButtonStrat
     ): Promise<void> {
         const { paypalcommerce, containerId, methodId } = options;
 
+        console.log('INIT');
+
         const isBuyNowFlow = Boolean(paypalcommerce?.buyNowInitializeOptions);
 
         if (!methodId) {
