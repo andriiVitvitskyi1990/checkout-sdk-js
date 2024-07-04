@@ -205,8 +205,8 @@ export default class PayPalCommerceButtonStrategy implements CheckoutButtonStrat
         console.log('DATA', data);
         const address = this.paypalCommerceIntegrationService.getAddress({
             city: data.shippingAddress.city,
-            countryCode: data.shippingAddress.country_code,
-            postalCode: data.shippingAddress.postal_code,
+            countryCode: data.shippingAddress.countryCode,
+            postalCode: data.shippingAddress.postalCode,
             stateOrProvinceCode: data.shippingAddress.state,
         });
 
