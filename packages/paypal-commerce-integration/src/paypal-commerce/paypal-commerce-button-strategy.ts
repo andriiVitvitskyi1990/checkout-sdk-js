@@ -217,6 +217,8 @@ export default class PayPalCommerceButtonStrategy implements CheckoutButtonStrat
 
             const shippingOption = this.paypalCommerceIntegrationService.getShippingOptionOrThrow();
 
+            console.log('SHIPPING OPTION', shippingOption);
+
             await this.paymentIntegrationService.selectShippingOption(shippingOption.id);
             await this.paypalCommerceIntegrationService.updateOrder();
         } catch (error) {

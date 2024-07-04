@@ -226,6 +226,8 @@ export default class PayPalCommerceIntegrationService {
         const shippingOptionToSelect =
             selectedShippingOption || recommendedShippingOption || availableShippingOptions[0];
 
+        console.log('JJJ', selectedShippingOption, shippingOptionToSelect);
+
         if (!shippingOptionToSelect) {
             throw new Error("Your order can't be shipped to this address");
         }
